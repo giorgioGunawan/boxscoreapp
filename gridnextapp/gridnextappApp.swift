@@ -1,20 +1,17 @@
 //
-//  GridBoxApp.swift
-//  GridBox
+//  BoxScoreApp.swift
+//  BoxScore
 //
 //  Created by Giorgio Gunawan on 22/5/2025.
 //
 
 import SwiftUI
-import RevenueCat
 
 @main
-struct GridBoxApp: App {
+struct BoxScoreApp: App {
     
     init() {
-        // Configure RevenueCat
-        Purchases.configure(withAPIKey: "appl_DJuiGyaIXrOydVnxXJuxBhDpmix")
-        Purchases.logLevel = .debug
+        // No initialization needed - all features are free
     }
     
     var body: some Scene {
@@ -27,7 +24,7 @@ struct GridBoxApp: App {
     }
     
     private func handleDeepLink(_ url: URL) {
-        if url.scheme == "gridbox" && url.host == "upgrade" {
+        if url.scheme == "boxscore" && url.host == "upgrade" {
             // Post notification to show upgrade screen
             NotificationCenter.default.post(name: NSNotification.Name("ShowUpgradeScreen"), object: nil)
         }

@@ -30,5 +30,6 @@ struct PremiumWidgetView: View {
 
 #Preview {
     PremiumWidgetView(widgetFamily: .systemSmall)
-        .previewContext(WidgetPreviewContext(family: .systemSmall))
+        .frame(width: 200, height: 200)
+        .background(Color.black)
 } 

@@ -132,8 +132,8 @@ struct WidgetDetailView: View {
                             }
                             
                             Text(widget.size == "Lock Screen" 
-                                ? "Long press lock screen → Customize → tap widget area → search 'GridBox'"
-                                : "Long press home screen → Edit Home Screen → tap + → search 'GridBox'")
+                                ? "Long press lock screen → Customize → tap widget area → search 'BoxScore'"
+                                : "Long press home screen → Edit Home Screen → tap + → search 'BoxScore'")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }
@@ -214,82 +214,46 @@ struct WidgetDetailView: View {
     }
     
     private var customizationText: String {
-        if widget.name.contains("Driver") {
-            return "Choose any F1 driver!"
-        } else if widget.name.contains("Constructor") || widget.name.contains("Team") {
-            return "Select your favorite F1 team!"
-        } else if widget.name.contains("Next Race") || widget.name.contains("Race Complete") || widget.name.contains("Race Compact") || widget.name.contains("Race Countdown") {
-            return "No customization needed"
-        } else if widget.name.contains("Result") {
-            return "No customization needed"
-        } else if widget.name.contains("Top 3") {
-            return "No customization needed"
+        if widget.name.contains("Player") {
+            return "Choose any NBA player!"
+        } else if widget.name.contains("Team") {
+            return "Select your favorite NBA team!"
         } else {
             return "No customization needed"
         }
     }
     
     private var customizationInstructions: String {
-        // First check if it's a lock screen widget
-        if widget.size == "Lock Screen" {
-            if widget.name.contains("Driver") {
-                return "Long press lock screen → Customize → tap widget area → select your favorite driver"
-            } else if widget.name.contains("Team") || widget.name.contains("Constructor") {
-                return "Long press lock screen → Customize → tap widget area → choose your team"
-            } else if widget.name.contains("Race Complete") {
-                return "No customization needed - shows detailed race information"
-            } else if widget.name.contains("Race Compact") {
-                return "No customization needed - shows essential race information"
-            } else if widget.name.contains("Race Countdown") {
-                return "No customization needed - shows pure countdown timer"
-            } else if widget.name.contains("Top 3 Drivers") {
-                return "No customization needed - shows current championship top 3 drivers"
-            } else if widget.name.contains("Top 3 Teams") {
-                return "No customization needed - shows current championship top 3 teams"
-            }
-        }
-        
-        // Home screen widgets
-        if widget.name.contains("Driver") {
-            return "Long press widget → Edit Widget → select your favorite driver"
-        } else if widget.name.contains("Team") || widget.name.contains("Constructor") {
+        if widget.name.contains("Player") {
+            return "Long press widget → Edit Widget → select your favorite player"
+        } else if widget.name.contains("Team") {
             return "Long press widget → Edit Widget → choose your team"
-        } else if widget.name.contains("Next Race Small") {
-            return "No customization needed - shows next race countdown"
-        } else if widget.name.contains("Next Race Medium") {
-            return "No customization needed - shows full race weekend schedule"
-        } else if widget.name.contains("Result Small") {
-            return "No customization needed - shows latest race winner and podium"
-        } else if widget.name.contains("Result Medium") {
-            return "No customization needed - shows detailed podium results"
+        } else {
+            return "No customization needed"
         }
-        
-        return "No customization needed"
     }
     
     private var tips: [String] {
         var tipsList: [String] = []
         
-        if widget.name.contains("Driver") {
-            tipsList.append("Switch drivers anytime by editing the widget")
-            tipsList.append("Driver helmet images update automatically")
+        if widget.name.contains("Player") {
+            tipsList.append("Switch players anytime by editing the widget")
+            tipsList.append("Player stats update automatically")
         }
         
-        if widget.name.contains("Constructor") {
-            tipsList.append("Team colors and F1 car images change with your selection")
-            tipsList.append("Shows both drivers' points for the team")
+        if widget.name.contains("Team") {
+            tipsList.append("Team information updates automatically")
+            tipsList.append("Shows current record and standings")
         }
         
-        if widget.name.contains("Next Race") {
-            tipsList.append("Countdown updates in real-time as race approaches")
-            tipsList.append("Shows practice, qualifying, and race times")
-            tipsList.append("Perfect for planning your race weekend viewing")
+        if widget.name.contains("Next") || widget.name.contains("Countdown") {
+            tipsList.append("Countdown updates in real-time as game approaches")
+            tipsList.append("Shows game times in your local timezone")
         }
         
-        if widget.name.contains("Race Result") {
-            tipsList.append("Updates immediately after each race finishes")
-            tipsList.append("Shows podium finishers and race winner")
-            tipsList.append("Great for catching up on races you missed")
+        if widget.name.contains("Last") || widget.name.contains("Result") {
+            tipsList.append("Updates immediately after each game finishes")
+            tipsList.append("Shows scores and win/loss indicators")
         }
         
         if widget.size == "Lock Screen" {
@@ -300,7 +264,7 @@ struct WidgetDetailView: View {
             tipsList.append("Best balance of information and screen space")
         }
         
-        tipsList.append("Data updates automatically after each race")
+        tipsList.append("Data updates automatically after each game")
         
         return tipsList
     }

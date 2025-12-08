@@ -1,18 +1,18 @@
 import Foundation
 import SwiftUI
 
-struct F1SharedData {
-    static let appGroupIdentifier = "group.com.giorgiogunawan.f1races"
+struct BoxScoreSharedData {
+    static let appGroupIdentifier = "group.com.giorgiogunawan.boxscore"
     
-    static func saveRaces(_ races: [F1Race]) {
+    static func saveTeams(_ teams: [NBATeam]) {
         guard let sharedDefaults = UserDefaults(suiteName: appGroupIdentifier) else { return }
-        guard let encoded = try? JSONEncoder().encode(races) else { return }
-        sharedDefaults.set(encoded, forKey: "races")
+        guard let encoded = try? JSONEncoder().encode(teams) else { return }
+        sharedDefaults.set(encoded, forKey: "teams")
     }
     
-    static func loadRaces() -> [F1Race]? {
+    static func loadTeams() -> [NBATeam]? {
         guard let sharedDefaults = UserDefaults(suiteName: appGroupIdentifier) else { return nil }
-        guard let data = sharedDefaults.data(forKey: "races") else { return nil }
-        return try? JSONDecoder().decode([F1Race].self, from: data)
+        guard let data = sharedDefaults.data(forKey: "teams") else { return nil }
+        return try? JSONDecoder().decode([NBATeam].self, from: data)
     }
 } 

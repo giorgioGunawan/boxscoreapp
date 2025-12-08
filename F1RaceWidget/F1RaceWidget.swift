@@ -2377,7 +2377,7 @@ struct F1ConstructorStandingWidgetView: View {
         case .accessoryRectangular:
             lockScreenWidget(constructor: constructor, position: position)
         default:
-            EmptyView()
+            SwiftUI.EmptyView()
         }
     }
     

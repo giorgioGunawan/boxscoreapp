@@ -62,9 +62,8 @@ struct F1RaceView: View {
     }
     
     private func loadData() {
-        if let races = F1SharedData.loadRaces() {
-            updateCurrentRace(from: races)
-        }
+        // F1RaceView is deprecated - using BoxScoreSharedData instead
+        // This view is kept for compatibility but should be replaced with NBA views
         Task {
             await refreshData()
         }
@@ -74,16 +73,9 @@ struct F1RaceView: View {
         isLoading = true
         defer { isLoading = false }
         
-        do {
-            let url = URL(string: "https://f1apibackend-1.onrender.com/api/races")!
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let races = try JSONDecoder().decode([F1Race].self, from: data)
-            
-            F1SharedData.saveRaces(races)
-            updateCurrentRace(from: races)
-        } catch {
-            print("Error loading data: \(error)")
-        }
+        // F1RaceView is deprecated - this functionality has been replaced with NBA widgets
+        // Keeping this for compatibility but it won't load data anymore
+        print("F1RaceView is deprecated - please use NBA widgets instead")
     }
     
     private func updateCurrentRace(from races: [F1Race]) {

@@ -3,47 +3,29 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		446CC7922EE6D9FB007C2F07 /* NBAAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446CC7792EE6D9FB007C2F07 /* NBAAPIService.swift */; };
+		446CC7932EE6D9FB007C2F07 /* NBAModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446CC77A2EE6D9FB007C2F07 /* NBAModels.swift */; };
+		446CC79C2EE6D9FB007C2F07 /* players_db.json in Resources */ = {isa = PBXBuildFile; fileRef = 446CC77B2EE6D9FB007C2F07 /* players_db.json */; };
+		446CC7A22EE6DF12007C2F07 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F577A32DDF5538005F1BF4 /* WidgetKit.framework */; };
+		446CC7A32EE6DF12007C2F07 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F577A52DDF5538005F1BF4 /* SwiftUI.framework */; };
+		446CC7B42EE6DF13007C2F07 /* BoxScoreWidgetExtensionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 446CC7A12EE6DF12007C2F07 /* BoxScoreWidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D04924772DF3FB02008DC731 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04924752DF3FB02008DC731 /* SettingsView.swift */; };
 		D04924782DF3FB02008DC731 /* WidgetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04924762DF3FB02008DC731 /* WidgetDetailView.swift */; };
-		D049247D2DF720AF008DC731 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = D049247C2DF720AF008DC731 /* RevenueCat */; };
 		D04924832DF722E5008DC731 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04924822DF722E5008DC731 /* SubscriptionManager.swift */; };
 		D04924862DF9B745008DC731 /* PremiumWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04924842DF9B745008DC731 /* PremiumWidgetView.swift */; };
 		D04924872DF9B745008DC731 /* SubscriptionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04924852DF9B745008DC731 /* SubscriptionHelper.swift */; };
-		D04924882DF9B79A008DC731 /* SubscriptionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04924852DF9B745008DC731 /* SubscriptionHelper.swift */; };
-		D04924892DF9B79B008DC731 /* SubscriptionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04924852DF9B745008DC731 /* SubscriptionHelper.swift */; };
-		D049248A2DF9B79D008DC731 /* PremiumWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04924842DF9B745008DC731 /* PremiumWidgetView.swift */; };
-		D049248B2DF9B79D008DC731 /* PremiumWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04924842DF9B745008DC731 /* PremiumWidgetView.swift */; };
 		D05507952DF0870C00D73287 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = D05507902DF0792600D73287 /* Fonts */; };
-		D05507962DF0870D00D73287 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = D05507902DF0792600D73287 /* Fonts */; };
-		D05507972DF0870E00D73287 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = D05507902DF0792600D73287 /* Fonts */; };
-		D08EA1162DEAE4E5007D5E8D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F577A32DDF5538005F1BF4 /* WidgetKit.framework */; };
-		D08EA1172DEAE4E5007D5E8D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F577A52DDF5538005F1BF4 /* SwiftUI.framework */; };
-		D08EA11A2DEAE4E5007D5E8D /* F1RaceResultBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EA1192DEAE4E5007D5E8D /* F1RaceResultBundle.swift */; };
-		D08EA11C2DEAE4E5007D5E8D /* F1RaceResultLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EA11B2DEAE4E5007D5E8D /* F1RaceResultLiveActivity.swift */; };
-		D08EA11E2DEAE4E5007D5E8D /* F1RaceResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EA11D2DEAE4E5007D5E8D /* F1RaceResult.swift */; };
-		D08EA1202DEAE4E6007D5E8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08EA11F2DEAE4E6007D5E8D /* Assets.xcassets */; };
-		D08EA1242DEAE4E6007D5E8D /* F1RaceResultExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D08EA1152DEAE4E5007D5E8D /* F1RaceResultExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		D08EA1292DEAE521007D5E8D /* F1RaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577DB2DE1387C005F1BF4 /* F1RaceModel.swift */; };
-		D08EA12A2DEAE52E007D5E8D /* F1RaceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577E02DE13967005F1BF4 /* F1RaceStyle.swift */; };
-		D08EA12B2DEAE530007D5E8D /* F1SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577DA2DE1387C005F1BF4 /* F1SharedData.swift */; };
-		D08EA15E2DEC52D4007D5E8D /* DriverIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D08EA15C2DEC52D4007D5E8D /* DriverIntent.intentdefinition */; };
 		D08EA1652DEC7EF4007D5E8D /* DriverIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D08EA15C2DEC52D4007D5E8D /* DriverIntent.intentdefinition */; };
 		D08EA1682DEC80AC007D5E8D /* ConfigureDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EA1662DEC80AC007D5E8D /* ConfigureDriver.swift */; };
-		D08EA1692DEC80AC007D5E8D /* ConfigureDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EA1662DEC80AC007D5E8D /* ConfigureDriver.swift */; };
 		D08EA16A2DEC80AC007D5E8D /* DriverAppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EA1672DEC80AC007D5E8D /* DriverAppEnum.swift */; };
-		D08EA16B2DEC80AC007D5E8D /* DriverAppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EA1672DEC80AC007D5E8D /* DriverAppEnum.swift */; };
 		D08EA16D2DEC8FC6007D5E8D /* F1RaceWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577B82DDF5568005F1BF4 /* F1RaceWidget.swift */; };
 		D08EA16F2DEDAEBF007D5E8D /* ConstructorIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D08EA16E2DEDAEBF007D5E8D /* ConstructorIntent.intentdefinition */; };
-		D08EA1702DEDAEBF007D5E8D /* ConstructorIntent.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D08EA16E2DEDAEBF007D5E8D /* ConstructorIntent.intentdefinition */; };
 		D08EA17B2DEDAFB2007D5E8D /* ConstructorAppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EA17A2DEDAFB2007D5E8D /* ConstructorAppEnum.swift */; };
-		D08EA17C2DEDAFB2007D5E8D /* ConstructorAppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EA17A2DEDAFB2007D5E8D /* ConstructorAppEnum.swift */; };
 		D08EA19F2DEDDACC007D5E8D /* ConfigureConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EA19E2DEDDACC007D5E8D /* ConfigureConstructor.swift */; };
-		D08EA1A02DEDDAD0007D5E8D /* ConfigureConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08EA19E2DEDDACC007D5E8D /* ConfigureConstructor.swift */; };
-		D08EA1A52DEDE611007D5E8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D08EA1A42DEDE611007D5E8D /* Assets.xcassets */; };
 		D0F577742DDF5334005F1BF4 /* gridnextappApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577732DDF5334005F1BF4 /* gridnextappApp.swift */; };
 		D0F577762DDF5334005F1BF4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577752DDF5334005F1BF4 /* ContentView.swift */; };
 		D0F577782DDF5335005F1BF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0F577772DDF5335005F1BF4 /* Assets.xcassets */; };
@@ -51,28 +33,19 @@
 		D0F577852DDF5336005F1BF4 /* gridnextappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577842DDF5336005F1BF4 /* gridnextappTests.swift */; };
 		D0F5778F2DDF5336005F1BF4 /* gridnextappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F5778E2DDF5336005F1BF4 /* gridnextappUITests.swift */; };
 		D0F577912DDF5336005F1BF4 /* gridnextappUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577902DDF5336005F1BF4 /* gridnextappUITestsLaunchTests.swift */; };
-		D0F577A42DDF5538005F1BF4 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F577A32DDF5538005F1BF4 /* WidgetKit.framework */; };
-		D0F577A62DDF5538005F1BF4 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F577A52DDF5538005F1BF4 /* SwiftUI.framework */; };
-		D0F577AF2DDF5539005F1BF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0F577AE2DDF5539005F1BF4 /* Assets.xcassets */; };
-		D0F577B32DDF5539005F1BF4 /* F1RaceWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D0F577A12DDF5537005F1BF4 /* F1RaceWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		D0F577BF2DDF5578005F1BF4 /* F1RaceWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577B82DDF5568005F1BF4 /* F1RaceWidget.swift */; };
-		D0F577C02DDF557A005F1BF4 /* F1RaceWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577BA2DDF5568005F1BF4 /* F1RaceWidgetBundle.swift */; };
 		D0F577C52DE13672005F1BF4 /* F1RaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577C42DE13672005F1BF4 /* F1RaceView.swift */; };
 		D0F577DC2DE1387C005F1BF4 /* F1SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577DA2DE1387C005F1BF4 /* F1SharedData.swift */; };
 		D0F577DD2DE1387C005F1BF4 /* F1RaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577DB2DE1387C005F1BF4 /* F1RaceModel.swift */; };
-		D0F577DE2DE1387F005F1BF4 /* F1SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577DA2DE1387C005F1BF4 /* F1SharedData.swift */; };
-		D0F577DF2DE13882005F1BF4 /* F1RaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577DB2DE1387C005F1BF4 /* F1RaceModel.swift */; };
 		D0F577E12DE13967005F1BF4 /* F1RaceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577E02DE13967005F1BF4 /* F1RaceStyle.swift */; };
-		D0F577E22DE1397E005F1BF4 /* F1RaceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577E02DE13967005F1BF4 /* F1RaceStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D08EA1222DEAE4E6007D5E8D /* PBXContainerItemProxy */ = {
+		446CC7B22EE6DF13007C2F07 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D0F577682DDF5334005F1BF4 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D08EA1142DEAE4E5007D5E8D;
-			remoteInfo = F1RaceResultExtension;
+			remoteGlobalIDString = 446CC7A02EE6DF12007C2F07;
+			remoteInfo = BoxScoreWidgetExtensionExtension;
 		};
 		D0F577812DDF5336005F1BF4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -88,38 +61,34 @@
 			remoteGlobalIDString = D0F5776F2DDF5334005F1BF4;
 			remoteInfo = gridnextapp;
 		};
-		D0F577B12DDF5539005F1BF4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D0F577682DDF5334005F1BF4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D0F577A02DDF5537005F1BF4;
-			remoteInfo = F1RaceWidgetExtension;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		D0F577B42DDF5539005F1BF4 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				D0F577B32DDF5539005F1BF4 /* F1RaceWidgetExtension.appex in Embed Foundation Extensions */,
-				D08EA1242DEAE4E6007D5E8D /* F1RaceResultExtension.appex in Embed Foundation Extensions */,
+				446CC7B42EE6DF13007C2F07 /* BoxScoreWidgetExtensionExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		446CC7782EE6D9FB007C2F07 /* BoxScoreWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BoxScoreWidgetExtension.entitlements; sourceTree = "<group>"; };
+		446CC7792EE6D9FB007C2F07 /* NBAAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAAPIService.swift; sourceTree = "<group>"; };
+		446CC77A2EE6D9FB007C2F07 /* NBAModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAModels.swift; sourceTree = "<group>"; };
+		446CC77B2EE6D9FB007C2F07 /* players_db.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = players_db.json; sourceTree = "<group>"; };
+		446CC7A12EE6DF12007C2F07 /* BoxScoreWidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BoxScoreWidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D04924752DF3FB02008DC731 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = gridnextapp/SettingsView.swift; sourceTree = "<group>"; };
 		D04924762DF3FB02008DC731 /* WidgetDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WidgetDetailView.swift; path = gridnextapp/WidgetDetailView.swift; sourceTree = "<group>"; };
 		D04924822DF722E5008DC731 /* SubscriptionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
 		D04924842DF9B745008DC731 /* PremiumWidgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PremiumWidgetView.swift; sourceTree = "<group>"; };
 		D04924852DF9B745008DC731 /* SubscriptionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionHelper.swift; sourceTree = "<group>"; };
 		D05507902DF0792600D73287 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
-		D08EA1152DEAE4E5007D5E8D /* F1RaceResultExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = F1RaceResultExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08EA1192DEAE4E5007D5E8D /* F1RaceResultBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F1RaceResultBundle.swift; sourceTree = "<group>"; };
 		D08EA11B2DEAE4E5007D5E8D /* F1RaceResultLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F1RaceResultLiveActivity.swift; sourceTree = "<group>"; };
 		D08EA11D2DEAE4E5007D5E8D /* F1RaceResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F1RaceResult.swift; sourceTree = "<group>"; };
@@ -134,7 +103,7 @@
 		D08EA17A2DEDAFB2007D5E8D /* ConstructorAppEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstructorAppEnum.swift; sourceTree = "<group>"; };
 		D08EA19E2DEDDACC007D5E8D /* ConfigureConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureConstructor.swift; sourceTree = "<group>"; };
 		D08EA1A42DEDE611007D5E8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = gridnextapp/Assets.xcassets; sourceTree = "<group>"; };
-		D0F577702DDF5334005F1BF4 /* gridnextapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gridnextapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0F577702DDF5334005F1BF4 /* boxscorewidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = boxscorewidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F577732DDF5334005F1BF4 /* gridnextappApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gridnextappApp.swift; sourceTree = "<group>"; };
 		D0F577752DDF5334005F1BF4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D0F577772DDF5335005F1BF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -144,7 +113,6 @@
 		D0F5778A2DDF5336005F1BF4 /* gridnextappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gridnextappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F5778E2DDF5336005F1BF4 /* gridnextappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gridnextappUITests.swift; sourceTree = "<group>"; };
 		D0F577902DDF5336005F1BF4 /* gridnextappUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gridnextappUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		D0F577A12DDF5537005F1BF4 /* F1RaceWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = F1RaceWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F577A32DDF5538005F1BF4 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		D0F577A52DDF5538005F1BF4 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		D0F577AE2DDF5539005F1BF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -159,13 +127,39 @@
 		D0F577E02DE13967005F1BF4 /* F1RaceStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F1RaceStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		446CC7B72EE6DF13007C2F07 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 446CC7A02EE6DF12007C2F07 /* BoxScoreWidgetExtensionExtension */;
+		};
+		446CC7B92EE6DF2E007C2F07 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CountdownWidget.swift,
+				LastGamesWidget.swift,
+				NextGamesWidget.swift,
+				PlayerLastGameWidget.swift,
+				SeasonAverageWidget.swift,
+				TeamStandingWidget.swift,
+			);
+			target = D0F5776F2DDF5334005F1BF4 /* boxscorewidget */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		446CC7A42EE6DF12007C2F07 /* BoxScoreWidgetExtension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (446CC7B92EE6DF2E007C2F07 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 446CC7B72EE6DF13007C2F07 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = BoxScoreWidgetExtension; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
-		D08EA1122DEAE4E5007D5E8D /* Frameworks */ = {
+		446CC79E2EE6DF12007C2F07 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D08EA1172DEAE4E5007D5E8D /* SwiftUI.framework in Frameworks */,
-				D08EA1162DEAE4E5007D5E8D /* WidgetKit.framework in Frameworks */,
+				446CC7A32EE6DF12007C2F07 /* SwiftUI.framework in Frameworks */,
+				446CC7A22EE6DF12007C2F07 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,7 +167,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D049247D2DF720AF008DC731 /* RevenueCat in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,18 +184,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D0F5779E2DDF5537005F1BF4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D0F577A62DDF5538005F1BF4 /* SwiftUI.framework in Frameworks */,
-				D0F577A42DDF5538005F1BF4 /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		446CC7772EE6D9FB007C2F07 /* BoxScoreWidget */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BoxScoreWidget;
+			sourceTree = "<group>";
+		};
 		D08EA1182DEAE4E5007D5E8D /* F1RaceResult */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,19 +228,24 @@
 				D0F5778D2DDF5336005F1BF4 /* gridnextappUITests */,
 				D0F577A72DDF5538005F1BF4 /* F1RaceWidget */,
 				D08EA1182DEAE4E5007D5E8D /* F1RaceResult */,
+				446CC7A42EE6DF12007C2F07 /* BoxScoreWidgetExtension */,
 				D0F577A22DDF5538005F1BF4 /* Frameworks */,
 				D0F577712DDF5334005F1BF4 /* Products */,
+				446CC7772EE6D9FB007C2F07 /* BoxScoreWidget */,
+				446CC7782EE6D9FB007C2F07 /* BoxScoreWidgetExtension.entitlements */,
+				446CC7792EE6D9FB007C2F07 /* NBAAPIService.swift */,
+				446CC77A2EE6D9FB007C2F07 /* NBAModels.swift */,
+				446CC77B2EE6D9FB007C2F07 /* players_db.json */,
 			);
 			sourceTree = "<group>";
 		};
 		D0F577712DDF5334005F1BF4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D0F577702DDF5334005F1BF4 /* gridnextapp.app */,
+				D0F577702DDF5334005F1BF4 /* boxscorewidget.app */,
 				D0F577802DDF5336005F1BF4 /* gridnextappTests.xctest */,
 				D0F5778A2DDF5336005F1BF4 /* gridnextappUITests.xctest */,
-				D0F577A12DDF5537005F1BF4 /* F1RaceWidgetExtension.appex */,
-				D08EA1152DEAE4E5007D5E8D /* F1RaceResultExtension.appex */,
+				446CC7A12EE6DF12007C2F07 /* BoxScoreWidgetExtensionExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -320,26 +316,31 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D08EA1142DEAE4E5007D5E8D /* F1RaceResultExtension */ = {
+		446CC7A02EE6DF12007C2F07 /* BoxScoreWidgetExtensionExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D08EA1272DEAE4E6007D5E8D /* Build configuration list for PBXNativeTarget "F1RaceResultExtension" */;
+			buildConfigurationList = 446CC7B82EE6DF13007C2F07 /* Build configuration list for PBXNativeTarget "BoxScoreWidgetExtensionExtension" */;
 			buildPhases = (
-				D08EA1112DEAE4E5007D5E8D /* Sources */,
-				D08EA1122DEAE4E5007D5E8D /* Frameworks */,
-				D08EA1132DEAE4E5007D5E8D /* Resources */,
+				446CC79D2EE6DF12007C2F07 /* Sources */,
+				446CC79E2EE6DF12007C2F07 /* Frameworks */,
+				446CC79F2EE6DF12007C2F07 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = F1RaceResultExtension;
-			productName = F1RaceResultExtension;
-			productReference = D08EA1152DEAE4E5007D5E8D /* F1RaceResultExtension.appex */;
+			fileSystemSynchronizedGroups = (
+				446CC7A42EE6DF12007C2F07 /* BoxScoreWidgetExtension */,
+			);
+			name = BoxScoreWidgetExtensionExtension;
+			packageProductDependencies = (
+			);
+			productName = BoxScoreWidgetExtensionExtension;
+			productReference = 446CC7A12EE6DF12007C2F07 /* BoxScoreWidgetExtensionExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		D0F5776F2DDF5334005F1BF4 /* gridnextapp */ = {
+		D0F5776F2DDF5334005F1BF4 /* boxscorewidget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0F577942DDF5336005F1BF4 /* Build configuration list for PBXNativeTarget "gridnextapp" */;
+			buildConfigurationList = D0F577942DDF5336005F1BF4 /* Build configuration list for PBXNativeTarget "boxscorewidget" */;
 			buildPhases = (
 				D0F5776C2DDF5334005F1BF4 /* Sources */,
 				D0F5776D2DDF5334005F1BF4 /* Frameworks */,
@@ -349,15 +350,13 @@
 			buildRules = (
 			);
 			dependencies = (
-				D0F577B22DDF5539005F1BF4 /* PBXTargetDependency */,
-				D08EA1232DEAE4E6007D5E8D /* PBXTargetDependency */,
+				446CC7B32EE6DF13007C2F07 /* PBXTargetDependency */,
 			);
-			name = gridnextapp;
+			name = boxscorewidget;
 			packageProductDependencies = (
-				D049247C2DF720AF008DC731 /* RevenueCat */,
 			);
 			productName = gridnextapp;
-			productReference = D0F577702DDF5334005F1BF4 /* gridnextapp.app */;
+			productReference = D0F577702DDF5334005F1BF4 /* boxscorewidget.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D0F5777F2DDF5336005F1BF4 /* gridnextappTests */ = {
@@ -396,23 +395,6 @@
 			productReference = D0F5778A2DDF5336005F1BF4 /* gridnextappUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		D0F577A02DDF5537005F1BF4 /* F1RaceWidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D0F577B72DDF5539005F1BF4 /* Build configuration list for PBXNativeTarget "F1RaceWidgetExtension" */;
-			buildPhases = (
-				D0F5779D2DDF5537005F1BF4 /* Sources */,
-				D0F5779E2DDF5537005F1BF4 /* Frameworks */,
-				D0F5779F2DDF5537005F1BF4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = F1RaceWidgetExtension;
-			productName = F1RaceWidgetExtension;
-			productReference = D0F577A12DDF5537005F1BF4 /* F1RaceWidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -420,11 +402,11 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1520;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
-					D08EA1142DEAE4E5007D5E8D = {
-						CreatedOnToolsVersion = 15.2;
+					446CC7A02EE6DF12007C2F07 = {
+						CreatedOnToolsVersion = 26.0;
 					};
 					D0F5776F2DDF5334005F1BF4 = {
 						CreatedOnToolsVersion = 15.2;
@@ -436,9 +418,6 @@
 					D0F577892DDF5336005F1BF4 = {
 						CreatedOnToolsVersion = 15.2;
 						TestTargetID = D0F5776F2DDF5334005F1BF4;
-					};
-					D0F577A02DDF5537005F1BF4 = {
-						CreatedOnToolsVersion = 15.2;
 					};
 				};
 			};
@@ -452,28 +431,24 @@
 			);
 			mainGroup = D0F577672DDF5334005F1BF4;
 			packageReferences = (
-				D04924792DF720AE008DC731 /* XCRemoteSwiftPackageReference "purchases-ios" */,
 			);
 			productRefGroup = D0F577712DDF5334005F1BF4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D0F5776F2DDF5334005F1BF4 /* gridnextapp */,
+				D0F5776F2DDF5334005F1BF4 /* boxscorewidget */,
 				D0F5777F2DDF5336005F1BF4 /* gridnextappTests */,
 				D0F577892DDF5336005F1BF4 /* gridnextappUITests */,
-				D0F577A02DDF5537005F1BF4 /* F1RaceWidgetExtension */,
-				D08EA1142DEAE4E5007D5E8D /* F1RaceResultExtension */,
+				446CC7A02EE6DF12007C2F07 /* BoxScoreWidgetExtensionExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D08EA1132DEAE4E5007D5E8D /* Resources */ = {
+		446CC79F2EE6DF12007C2F07 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D08EA1202DEAE4E6007D5E8D /* Assets.xcassets in Resources */,
-				D05507972DF0870E00D73287 /* Fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,7 +458,7 @@
 			files = (
 				D0F5777B2DDF5335005F1BF4 /* Preview Assets.xcassets in Resources */,
 				D0F577782DDF5335005F1BF4 /* Assets.xcassets in Resources */,
-				D08EA1A52DEDE611007D5E8D /* Assets.xcassets in Resources */,
+				446CC79C2EE6D9FB007C2F07 /* players_db.json in Resources */,
 				D05507952DF0870C00D73287 /* Fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,30 +477,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D0F5779F2DDF5537005F1BF4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D0F577AF2DDF5539005F1BF4 /* Assets.xcassets in Resources */,
-				D05507962DF0870D00D73287 /* Fonts in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D08EA1112DEAE4E5007D5E8D /* Sources */ = {
+		446CC79D2EE6DF12007C2F07 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D049248B2DF9B79D008DC731 /* PremiumWidgetView.swift in Sources */,
-				D08EA11A2DEAE4E5007D5E8D /* F1RaceResultBundle.swift in Sources */,
-				D08EA12A2DEAE52E007D5E8D /* F1RaceStyle.swift in Sources */,
-				D08EA11C2DEAE4E5007D5E8D /* F1RaceResultLiveActivity.swift in Sources */,
-				D08EA12B2DEAE530007D5E8D /* F1SharedData.swift in Sources */,
-				D08EA11E2DEAE4E5007D5E8D /* F1RaceResult.swift in Sources */,
-				D08EA1292DEAE521007D5E8D /* F1RaceModel.swift in Sources */,
-				D04924892DF9B79B008DC731 /* SubscriptionHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +492,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0F577DD2DE1387C005F1BF4 /* F1RaceModel.swift in Sources */,
+				446CC7922EE6D9FB007C2F07 /* NBAAPIService.swift in Sources */,
+				446CC7932EE6D9FB007C2F07 /* NBAModels.swift in Sources */,
 				D08EA16F2DEDAEBF007D5E8D /* ConstructorIntent.intentdefinition in Sources */,
 				D08EA1652DEC7EF4007D5E8D /* DriverIntent.intentdefinition in Sources */,
 				D0F577C52DE13672005F1BF4 /* F1RaceView.swift in Sources */,
@@ -571,113 +531,90 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D0F5779D2DDF5537005F1BF4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D04924882DF9B79A008DC731 /* SubscriptionHelper.swift in Sources */,
-				D08EA16B2DEC80AC007D5E8D /* DriverAppEnum.swift in Sources */,
-				D0F577DE2DE1387F005F1BF4 /* F1SharedData.swift in Sources */,
-				D08EA1692DEC80AC007D5E8D /* ConfigureDriver.swift in Sources */,
-				D08EA1702DEDAEBF007D5E8D /* ConstructorIntent.intentdefinition in Sources */,
-				D0F577E22DE1397E005F1BF4 /* F1RaceStyle.swift in Sources */,
-				D049248A2DF9B79D008DC731 /* PremiumWidgetView.swift in Sources */,
-				D0F577C02DDF557A005F1BF4 /* F1RaceWidgetBundle.swift in Sources */,
-				D08EA1A02DEDDAD0007D5E8D /* ConfigureConstructor.swift in Sources */,
-				D0F577BF2DDF5578005F1BF4 /* F1RaceWidget.swift in Sources */,
-				D08EA15E2DEC52D4007D5E8D /* DriverIntent.intentdefinition in Sources */,
-				D08EA17C2DEDAFB2007D5E8D /* ConstructorAppEnum.swift in Sources */,
-				D0F577DF2DE13882005F1BF4 /* F1RaceModel.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D08EA1232DEAE4E6007D5E8D /* PBXTargetDependency */ = {
+		446CC7B32EE6DF13007C2F07 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D08EA1142DEAE4E5007D5E8D /* F1RaceResultExtension */;
-			targetProxy = D08EA1222DEAE4E6007D5E8D /* PBXContainerItemProxy */;
+			target = 446CC7A02EE6DF12007C2F07 /* BoxScoreWidgetExtensionExtension */;
+			targetProxy = 446CC7B22EE6DF13007C2F07 /* PBXContainerItemProxy */;
 		};
 		D0F577822DDF5336005F1BF4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D0F5776F2DDF5334005F1BF4 /* gridnextapp */;
+			target = D0F5776F2DDF5334005F1BF4 /* boxscorewidget */;
 			targetProxy = D0F577812DDF5336005F1BF4 /* PBXContainerItemProxy */;
 		};
 		D0F5778C2DDF5336005F1BF4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D0F5776F2DDF5334005F1BF4 /* gridnextapp */;
+			target = D0F5776F2DDF5334005F1BF4 /* boxscorewidget */;
 			targetProxy = D0F5778B2DDF5336005F1BF4 /* PBXContainerItemProxy */;
-		};
-		D0F577B22DDF5539005F1BF4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D0F577A02DDF5537005F1BF4 /* F1RaceWidgetExtension */;
-			targetProxy = D0F577B12DDF5539005F1BF4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		D08EA1252DEAE4E6007D5E8D /* Debug */ = {
+		446CC7B52EE6DF13007C2F07 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = F1RaceResultExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = BoxScoreWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 268AG44AZA;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = F1RaceResult/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = F1RaceResult;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = BoxScoreWidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BoxScore;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gridnextapp.gridnextapp.F1RaceResult;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.boxscorewidget.boxscorewidget.BoxScoreWidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		D08EA1262DEAE4E6007D5E8D /* Release */ = {
+		446CC7B62EE6DF13007C2F07 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = F1RaceResultExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = BoxScoreWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 268AG44AZA;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = F1RaceResult/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = F1RaceResult;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = BoxScoreWidgetExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BoxScore;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gridnextapp.gridnextapp.F1RaceResult;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.boxscorewidget.boxscorewidget.BoxScoreWidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -716,6 +653,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 268AG44AZA;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -739,6 +677,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -779,6 +718,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 268AG44AZA;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -795,6 +735,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -803,7 +744,6 @@
 		D0F577952DDF5336005F1BF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
@@ -812,23 +752,23 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"gridnextapp/Preview Content\"";
-				DEVELOPMENT_TEAM = 268AG44AZA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = gridnextapp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = GridBox;
+				INFOPLIST_KEY_CFBundleDisplayName = BoxScore;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gridnextapp.gridnextapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.boxscorewidget.boxscorewidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -844,7 +784,6 @@
 		D0F577962DDF5336005F1BF4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
@@ -853,23 +792,23 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"gridnextapp/Preview Content\"";
-				DEVELOPMENT_TEAM = 268AG44AZA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = gridnextapp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = GridBox;
+				INFOPLIST_KEY_CFBundleDisplayName = BoxScore;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gridnextapp.gridnextapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.boxscorewidget.boxscorewidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -885,15 +824,13 @@
 		D0F577982DDF5336005F1BF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 268AG44AZA;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gridnextapp.gridnextappTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.boxscorewidget.gridnextappTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -909,15 +846,13 @@
 		D0F577992DDF5336005F1BF4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 268AG44AZA;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gridnextapp.gridnextappTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.boxscorewidget.gridnextappTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -933,13 +868,11 @@
 		D0F5779B2DDF5336005F1BF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 268AG44AZA;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gridnextapp.gridnextappUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.boxscorewidget.gridnextappUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -955,13 +888,11 @@
 		D0F5779C2DDF5336005F1BF4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 268AG44AZA;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gridnextapp.gridnextappUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.boxscorewidget.gridnextappUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -974,78 +905,14 @@
 			};
 			name = Release;
 		};
-		D0F577B52DDF5539005F1BF4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = F1RaceWidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 268AG44AZA;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = F1RaceWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = F1RaceWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gridnextapp.gridnextapp.F1RaceWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		D0F577B62DDF5539005F1BF4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = F1RaceWidgetExtension.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 268AG44AZA;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = F1RaceWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = F1RaceWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gridnextapp.gridnextapp.F1RaceWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D08EA1272DEAE4E6007D5E8D /* Build configuration list for PBXNativeTarget "F1RaceResultExtension" */ = {
+		446CC7B82EE6DF13007C2F07 /* Build configuration list for PBXNativeTarget "BoxScoreWidgetExtensionExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D08EA1252DEAE4E6007D5E8D /* Debug */,
-				D08EA1262DEAE4E6007D5E8D /* Release */,
+				446CC7B52EE6DF13007C2F07 /* Debug */,
+				446CC7B62EE6DF13007C2F07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1059,7 +926,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D0F577942DDF5336005F1BF4 /* Build configuration list for PBXNativeTarget "gridnextapp" */ = {
+		D0F577942DDF5336005F1BF4 /* Build configuration list for PBXNativeTarget "boxscorewidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0F577952DDF5336005F1BF4 /* Debug */,
@@ -1086,35 +953,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D0F577B72DDF5539005F1BF4 /* Build configuration list for PBXNativeTarget "F1RaceWidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D0F577B52DDF5539005F1BF4 /* Debug */,
-				D0F577B62DDF5539005F1BF4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		D04924792DF720AE008DC731 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RevenueCat/purchases-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.27.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		D049247C2DF720AF008DC731 /* RevenueCat */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D04924792DF720AE008DC731 /* XCRemoteSwiftPackageReference "purchases-ios" */;
-			productName = RevenueCat;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D0F577682DDF5334005F1BF4 /* Project object */;
 }

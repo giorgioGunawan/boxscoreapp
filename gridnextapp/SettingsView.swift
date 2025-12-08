@@ -27,7 +27,7 @@ struct SettingsView: View {
                                     RoundedRectangle(cornerRadius: 12)
                                         .fill(Color.blue.gradient)
                                         .overlay(
-                                            Image(systemName: "flag.checkered")
+                                            Image(systemName: "basketball.fill")
                                                 .font(.title2)
                                                 .foregroundColor(.white)
                                         )
@@ -37,7 +37,7 @@ struct SettingsView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                             
                             VStack(alignment: .leading, spacing: 4) {
-                                Text("GridBox")
+                                Text("BoxScore")
                                     .font(.headline)
                                     .fontWeight(.semibold)
                                 
@@ -45,7 +45,7 @@ struct SettingsView: View {
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                 
-                                Text("F1 widgets for your phone")
+                                Text("NBA widgets for your phone")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                             }
@@ -75,8 +75,8 @@ struct SettingsView: View {
                             
                             InfoCard(
                                 icon: "heart",
-                                title: "Made for F1 Fans",
-                                subtitle: "by F1 Fans",
+                                title: "Made for NBA Fans",
+                                subtitle: "by NBA Fans",
                                 iconColor: .red
                             )
                         }
@@ -118,7 +118,7 @@ struct SettingsView: View {
                         InfoCard(
                             icon: "envelope",
                             title: "Email",
-                            subtitle: "gridboxwidget@gmail.com",
+                            subtitle: "boxscorewidget@gmail.com",
                             iconColor: .blue
                         )
                     }
@@ -159,7 +159,7 @@ struct SettingsView: View {
                         InfoCard(
                             icon: "at",
                             title: "Follow Us on Instagram, X, and TikTok",
-                            subtitle: "@gridboxwidget",
+                            subtitle: "@boxscorewidget",
                             iconColor: .purple
                         )
                     }

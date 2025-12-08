@@ -67,18 +67,17 @@ struct ContentView: View {
                 selectedTab = 1
             }
         }
-        .onAppear {
-            // Show paywall every time the app appears and user is on home tab (only if not pro)
-            if selectedTab == 0 && !subscriptionManager.effectiveProStatus {
-                showingFullPagePaywall = true
-            }
-        }
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-            // Show paywall when app comes to foreground and user is on home tab (only if not pro)
-            if selectedTab == 0 && !subscriptionManager.effectiveProStatus {
-                showingFullPagePaywall = true
-            }
-        }
+        // Disabled paywall - all features are free
+        // .onAppear {
+        //     if selectedTab == 0 && !subscriptionManager.effectiveProStatus {
+        //         showingFullPagePaywall = true
+        //     }
+        // }
+        // .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+        //     if selectedTab == 0 && !subscriptionManager.effectiveProStatus {
+        //         showingFullPagePaywall = true
+        //     }
+        // }
         .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("ShowUpgradeScreen"))) { _ in
             // Show upgrade screen when deep link is triggered (from widget tap)
             showingFullPagePaywall = true
@@ -101,138 +100,56 @@ struct ContentView: View {
 struct WidgetGalleryView: View {
     let widgetCategories = [
         WidgetCategory(
-            title: "Next Race Widget",
-            description: "Never miss a race - countdown to lights out!",
+            title: "Team Games Widgets",
+            description: "Track your team's upcoming games and results",
             widgets: [
                 WidgetInfo(
-                    name: "Next Race Small",
-                    description: "Race countdown with track info",
+                    name: "Next 3 Games",
+                    description: "Shows your team's next 3 upcoming games",
                     size: "Home Screen",
-                    imageName: "next_race_small_preview",
+                    imageName: "next_games_preview",
                     isPremium: false
                 ),
                 WidgetInfo(
-                    name: "Race Complete",
-                    description: "Full race details on lock screen",
-                    size: "Lock Screen",
-                    imageName: "next_race_complete_preview",
+                    name: "Last 3 Results",
+                    description: "Shows your team's last 3 game results",
+                    size: "Home Screen",
+                    imageName: "last_games_preview",
                     isPremium: false
                 ),
                 WidgetInfo(
-                    name: "Next Race Medium",
-                    description: "Full race weekend schedule with countdown",
-                    size: "Home Screen", 
-                    imageName: "next_race_medium_preview",
-                    isPremium: true
+                    name: "Countdown to Next Game",
+                    description: "Countdown timer until your team's next game",
+                    size: "Home Screen",
+                    imageName: "countdown_preview",
+                    isPremium: false
                 ),
                 WidgetInfo(
-                    name: "Race Compact",
-                    description: "Essential race info on lock screen",
-                    size: "Lock Screen",
-                    imageName: "next_race_compact_preview",
-                    isPremium: true
-                ),
-                WidgetInfo(
-                    name: "Race Countdown",
-                    description: "Pure countdown timer on lock screen",
-                    size: "Lock Screen",
-                    imageName: "next_race_countdown_preview",
-                    isPremium: true
+                    name: "Team Standing",
+                    description: "Shows your team's current record and conference rank",
+                    size: "Home Screen",
+                    imageName: "team_standing_preview",
+                    isPremium: false
                 )
             ]
         ),
         WidgetCategory(
-            title: "Latest Race Results Widget",
-            description: "See who crossed the finish line first",
+            title: "Player Widgets",
+            description: "Follow your favorite player's performance",
             widgets: [
                 WidgetInfo(
-                    name: "Result Small",
-                    description: "Winner and podium finishers",
+                    name: "Season Average",
+                    description: "Shows a player's season averages and stats",
                     size: "Home Screen",
-                    imageName: "race_result_small_preview",
+                    imageName: "season_average_preview",
                     isPremium: false
                 ),
                 WidgetInfo(
-                    name: "Result Medium",
-                    description: "Top 3 finishers",
+                    name: "Player Last Game",
+                    description: "Shows a player's last game performance",
                     size: "Home Screen",
-                    imageName: "race_result_medium_preview",
-                    isPremium: true
-                ),
-            ]
-        ),
-        WidgetCategory(
-            title: "Driver Widget",
-            description: "Track your favorite driver's championship position",
-            widgets: [
-                WidgetInfo(
-                    name: "Driver Small",
-                    description: "Compact driver standings widget",
-                    size: "Home Screen",
-                    imageName: "driver_small_preview",
-                    isPremium: true
-                ),
-                WidgetInfo(
-                    name: "Driver Medium",
-                    description: "Detailed driver info with helmet",
-                    size: "Home Screen", 
-                    imageName: "driver_medium_preview",
-                    isPremium: true
-                ),
-                WidgetInfo(
-                    name: "Driver Stats",
-                    description: "Quick driver stats on lock screen",
-                    size: "Lock Screen",
-                    imageName: "driver_lockscreen_preview",
-                    isPremium: true
-                )
-            ]
-        ),
-        WidgetCategory(
-            title: "Constructor Widget", 
-            description: "Follow your favorite team's championship battle",
-            widgets: [
-                WidgetInfo(
-                    name: "Team Small",
-                    description: "Team standings with F1 car overlay",
-                    size: "Home Screen",
-                    imageName: "constructor_small_preview",
-                    isPremium: true
-                ),
-                // TEMPORARILY HIDDEN - Team Medium Widget
-                // WidgetInfo(
-                //     name: "Team Medium",
-                //     description: "Full team info with both drivers",
-                //     size: "Home Screen",
-                //     imageName: "constructor_medium_preview",
-                //     isPremium: true
-                // ),
-                WidgetInfo(
-                    name: "Team Stats",
-                    description: "Team standings on lock screen",
-                    size: "Lock Screen", 
-                    imageName: "constructor_lockscreen_preview",
-                    isPremium: true
-                )
-            ]
-        ),
-        WidgetCategory(
-            title: "Championship Widget",
-            description: "See the top performers at a glance",
-            widgets: [
-                WidgetInfo(
-                    name: "Top 3 Drivers",
-                    description: "Championship leaders on lock screen",
-                    size: "Lock Screen",
-                    imageName: "top3_drivers_preview",
+                    imageName: "player_last_game_preview",
                     isPremium: false
-                ),
-                WidgetInfo(
-                    name: "Top 3 Teams", 
-                    description: "Leading teams on lock screen",
-                    size: "Lock Screen",
-                    imageName: "top3_constructors_preview",
-                    isPremium: true
                 )
             ]
         )
@@ -246,9 +163,9 @@ struct WidgetGalleryView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVStack(spacing: 24) {
-                // GridBox Title
-                Text("GridBox")
-                    .font(.custom("Formula1-Display-Bold", size: 32))
+                // BoxScore Title
+                Text("BoxScore")
+                    .font(.system(size: 32, weight: .bold))
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.horizontal)
@@ -758,23 +675,23 @@ struct HowToView: View {
             imageName: "home_step_3"
         ),
         TutorialStep(
-            title: "Search for GridBox",
-            description: "Type 'GridBox' in the search bar or scroll to find our widgets.",
+            title: "Search for BoxScore",
+            description: "Type 'BoxScore' in the search bar or scroll to find our widgets.",
             imageName: "home_step_4"
         ),
         TutorialStep(
             title: "Choose & Add Widget",
-            description: "Select your preferred GridBox widget and tap 'Add Widget' to place it on your home screen.",
+            description: "Select your preferred BoxScore widget and tap 'Add Widget' to place it on your home screen.",
             imageName: "home_step_5"
         ),
         TutorialStep(
             title: "Customize Your Widget (Optional)",
-            description: "For customizable widgets, long press the widget and select 'Edit Widget' to choose your favorite driver or team.",
+            description: "For customizable widgets, long press the widget and select 'Edit Widget' to choose your favorite player or team.",
             imageName: "home_step_6"
         ),
         TutorialStep(
             title: "Select Your Preferences (Optional)",
-            description: "Choose your favorite driver or team from the customization options that appear.",
+            description: "Choose your favorite player or team from the customization options that appear.",
             imageName: "home_step_7"
         )
     ]
@@ -801,13 +718,13 @@ struct HowToView: View {
             imageName: "lock_step_4"
         ),
         TutorialStep(
-            title: "Find GridBox Widgets",
-            description: "Search for 'GridBox' and select your preferred widget.",
+            title: "Find BoxScore Widgets",
+            description: "Search for 'BoxScore' and select your preferred widget.",
             imageName: "lock_step_5"
         ),
         TutorialStep(
             title: "Choose Preferred Widgets",
-            description: "Select the GridBox widgets you want to add to your lock screen.",
+            description: "Select the BoxScore widgets you want to add to your lock screen.",
             imageName: "lock_step_6"
         ),
         TutorialStep(
@@ -817,12 +734,12 @@ struct HowToView: View {
         ),
         TutorialStep(
             title: "Pick Your Favorite",
-            description: "Choose your favorite driver or constructor from the customization options.",
+            description: "Choose your favorite player or team from the customization options.",
             imageName: "lock_step_8"
         ),
         TutorialStep(
             title: "Done!",
-            description: "Tap 'Done' to save your lock screen with the new GridBox widgets.",
+            description: "Tap 'Done' to save your lock screen with the new BoxScore widgets.",
             imageName: "lock_step_9"
         )
     ]
@@ -1021,12 +938,12 @@ struct FullPagePaywall: View {
                                     .foregroundColor(.red)
                                     .shadow(color: .red.opacity(0.5), radius: 15, x: 0, y: 8)
                                 
-                                Text("GridBox Pro")
+                                Text("BoxScore Pro")
                                     .font(.largeTitle)
                                     .fontWeight(.bold)
                                     .foregroundStyle(
                                         LinearGradient(
-                                            gradient: Gradient(colors: [Color.red, Color.orange]),
+                                            gradient: Gradient(colors: [Color.orange, Color.red]),
                                             startPoint: .leading,
                                             endPoint: .trailing
                                         )
@@ -1063,7 +980,7 @@ struct FullPagePaywall: View {
                                 
                                 VStack(spacing: 16) {
                                     FeatureRow(icon: "checkmark.circle.fill", text: "All premium widgets unlocked")
-                                    FeatureRow(icon: "checkmark.circle.fill", text: "Choose your favorite driver or team")
+                                    FeatureRow(icon: "checkmark.circle.fill", text: "Choose your favorite player or team")
                                     FeatureRow(icon: "checkmark.circle.fill", text: "Advanced lock screen widgets")
                                     FeatureRow(icon: "checkmark.circle.fill", text: "Remove annoying ads")
                                     FeatureRow(icon: "checkmark.circle.fill", text: "Future updates included")
@@ -1269,12 +1186,12 @@ struct SimpleUpgradeSheet: View {
                                     .foregroundColor(.red)
                                     .shadow(color: .red.opacity(0.4), radius: 12, x: 0, y: 6)
                                 
-                                Text("GridBox Pro")
+                                Text("BoxScore Pro")
                                     .font(.title)
                                     .fontWeight(.bold)
                                     .foregroundStyle(
                                         LinearGradient(
-                                            gradient: Gradient(colors: [Color.red, Color.orange]),
+                                            gradient: Gradient(colors: [Color.orange, Color.red]),
                                             startPoint: .leading,
                                             endPoint: .trailing
                                         )
