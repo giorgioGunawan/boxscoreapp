@@ -102,12 +102,12 @@ struct SmallCountdownView: View {
         VStack(alignment: .leading, spacing: 3) {
             HStack(spacing: 4) {
                 Text(entry.teamAbbr ?? "TBD")
-                    .font(.system(size: 14, weight: .black))
+                    .font(.system(size: 15, weight: .black))
                 Text(game.is_home ? "vs" : "@")
                     .font(.system(size: 12, weight: .semibold))
                     .foregroundColor(game.is_home ? .green : .blue)
                 Text(game.opponent)
-                    .font(.system(size: 14, weight: .black))
+                    .font(.system(size: 15, weight: .black))
             }
             
             Divider()
@@ -116,12 +116,32 @@ struct SmallCountdownView: View {
                 let timeUntil = gameDate.timeIntervalSince(currentDate)
                 
                 if timeUntil > 0 {
-                    VStack(alignment: .leading, spacing: 1) {
-                        Text(formatCountdown(timeUntil))
-                            .font(.system(size: 32, weight: .black))
-                        Text("until tip-off")
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Game starts in")
                             .font(.system(size: 10, weight: .medium))
                             .foregroundColor(.secondary)
+                        
+                        HStack(spacing: 20) {
+                            VStack(spacing: 0) {
+                                Text(formatDays(timeUntil))
+                                    .font(.system(size: 32, weight: .black))
+                                    .fixedSize()
+                                Text("days")
+                                    .font(.system(size: 11, weight: .semibold))
+                                    .foregroundColor(.secondary)
+                            }
+                            
+                            VStack(spacing: 0) {
+                                Text(formatHours(timeUntil))
+                                    .font(.system(size: 32, weight: .black))
+                                    .fixedSize()
+                                Text("hours")
+                                    .font(.system(size: 11, weight: .semibold))
+                                    .foregroundColor(.secondary)
+                            }
+                            
+                            Spacer()
+                        }
                     }
                 } else {
                     Text("LIVE")
@@ -131,22 +151,31 @@ struct SmallCountdownView: View {
                 
                 Spacer()
                 
-                VStack(alignment: .leading, spacing: 0) {
-                    Text(formatGameDate(gameDate))
-                        .font(.system(size: 11, weight: .semibold))
-                    Text(formatGameTime(gameDate))
-                        .font(.system(size: 13, weight: .bold))
-                }
+                Text(formatGameDate(gameDate))
+                    .font(.system(size: 11, weight: .semibold))
+                    .foregroundColor(.secondary)
             }
         }
         .padding(6)
     }
     
+    private func formatDays(_ timeInterval: TimeInterval) -> String {
+        let totalHours = Int(timeInterval) / 3600
+        let days = totalHours / 24
+        return String(format: "%02d", days)
+    }
+    
+    private func formatHours(_ timeInterval: TimeInterval) -> String {
+        let totalHours = Int(timeInterval) / 3600
+        let hours = totalHours % 24
+        return String(format: "%02d", hours)
+    }
+    
     private func formatGameDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current
-        formatter.dateFormat = "E MMM d"
-        return formatter.string(from: date)
+        formatter.dateFormat = "E MMM d h:mma"
+        return formatter.string(from: date).replacingOccurrences(of: "am", with: "AM").replacingOccurrences(of: "pm", with: "PM")
     }
 }
 
@@ -160,12 +189,12 @@ struct MediumCountdownView: View {
             // Show both teams
             HStack(spacing: 6) {
                 Text(entry.teamAbbr ?? "TBD")
-                    .font(.system(size: 16, weight: .black))
+                    .font(.system(size: 17, weight: .black))
                 Text(game.is_home ? "vs" : "@")
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(game.is_home ? .green : .blue)
                 Text(game.opponent)
-                    .font(.system(size: 16, weight: .black))
+                    .font(.system(size: 17, weight: .black))
             }
             
             Divider()
@@ -173,42 +202,65 @@ struct MediumCountdownView: View {
             if let gameDate = NBAAPIService.parseUTCDate(game.datetime_utc) {
                 let timeUntil = gameDate.timeIntervalSince(currentDate)
                 
-                HStack(alignment: .top, spacing: 16) {
-                    VStack(alignment: .leading, spacing: 2) {
-                        if timeUntil > 0 {
-                            Text(formatCountdown(timeUntil))
-                                .font(.system(size: 42, weight: .black))
-                            Text("until tip-off")
-                                .font(.system(size: 11, weight: .medium))
-                                .foregroundColor(.secondary)
-                        } else {
-                            Text("LIVE NOW")
-                                .font(.system(size: 32, weight: .black))
-                                .foregroundColor(.red)
+                if timeUntil > 0 {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Game starts in")
+                            .font(.system(size: 11, weight: .medium))
+                            .foregroundColor(.secondary)
+                        
+                        HStack(spacing: 20) {
+                            VStack(spacing: 2) {
+                                Text(formatDays(timeUntil))
+                                    .font(.system(size: 40, weight: .black))
+                                Text("days")
+                                    .font(.system(size: 10, weight: .medium))
+                                    .foregroundColor(.secondary)
+                            }
+                            
+                            VStack(spacing: 2) {
+                                Text(formatHours(timeUntil))
+                                    .font(.system(size: 40, weight: .black))
+                                Text("hours")
+                                    .font(.system(size: 10, weight: .medium))
+                                    .foregroundColor(.secondary)
+                            }
+                            
+                            Spacer()
                         }
                     }
-                    
-                    Spacer()
-                    
-                    VStack(alignment: .trailing, spacing: 2) {
-                        Text(formatFullDate(gameDate))
-                            .font(.system(size: 12, weight: .semibold))
-                        Text(formatGameTime(gameDate))
-                            .font(.system(size: 18, weight: .black))
-                        Text(game.is_home ? "Home" : "Away")
-                            .font(.system(size: 11, weight: .semibold))
-                            .foregroundColor(game.is_home ? .green : .blue)
-                    }
+                } else {
+                    Text("LIVE NOW")
+                        .font(.system(size: 32, weight: .black))
+                        .foregroundColor(.red)
                 }
+                
+                Spacer()
+                
+                // Game details in one line
+                Text("\(formatGameDateOneLine(gameDate)) | \(formatGameTime(gameDate))")
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundColor(.secondary)
             }
         }
         .padding(6)
     }
     
-    private func formatFullDate(_ date: Date) -> String {
+    private func formatDays(_ timeInterval: TimeInterval) -> String {
+        let totalHours = Int(timeInterval) / 3600
+        let days = totalHours / 24
+        return String(format: "%02d", days)
+    }
+    
+    private func formatHours(_ timeInterval: TimeInterval) -> String {
+        let totalHours = Int(timeInterval) / 3600
+        let hours = totalHours % 24
+        return String(format: "%02d", hours)
+    }
+    
+    private func formatGameDateOneLine(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current
-        formatter.dateFormat = "EEEE, MMM d"
+        formatter.dateFormat = "E MMM d"
         return formatter.string(from: date)
     }
 }

@@ -104,14 +104,14 @@ struct SmallSeasonAverageView: View {
                     let nameParts = averages.player_name.split(separator: " ")
                     if nameParts.count >= 2 {
                         Text(String(nameParts.first ?? ""))
-                            .font(.system(size: 16, weight: .black))
+                            .font(.system(size: 18, weight: .black))
                             .lineLimit(1)
                         Text(String(nameParts.last ?? ""))
-                            .font(.system(size: 16, weight: .black))
+                            .font(.system(size: 18, weight: .black))
                             .lineLimit(1)
                     } else {
                         Text(averages.player_name)
-                            .font(.system(size: 16, weight: .black))
+                            .font(.system(size: 18, weight: .black))
                             .lineLimit(2)
                     }
                 }
@@ -203,14 +203,14 @@ struct MediumSeasonAverageView: View {
                     let nameParts = averages.player_name.split(separator: " ")
                     if nameParts.count >= 2 {
                         Text(String(nameParts.first ?? ""))
-                            .font(.system(size: 20, weight: .black))
+                            .font(.system(size: 22, weight: .black))
                             .lineLimit(1)
                         Text(String(nameParts.last ?? ""))
-                            .font(.system(size: 20, weight: .black))
+                            .font(.system(size: 22, weight: .black))
                             .lineLimit(1)
                     } else {
                         Text(averages.player_name)
-                            .font(.system(size: 20, weight: .black))
+                            .font(.system(size: 22, weight: .black))
                             .lineLimit(2)
                     }
                 }
