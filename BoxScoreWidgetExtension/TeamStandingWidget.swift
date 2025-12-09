@@ -90,56 +90,35 @@ struct SmallTeamStandingView: View {
     let standings: TeamStandings
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text(standings.team_name)
-                .font(.headline)
-                .foregroundColor(.white)
-                .lineLimit(2)
+        VStack(alignment: .leading, spacing: 3) {
+            Text(standings.abbreviation)
+                .font(.system(size: 16, weight: .black))
             
-            Spacer()
+            Divider()
             
-            // Record
-            VStack(alignment: .leading, spacing: 8) {
-                HStack {
-                    Text("Record")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                    Spacer()
-                    Text("\(standings.wins)-\(standings.losses)")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                }
-                
-                // Conference rank
-                HStack {
-                    Text("Conference")
-                        .font(.caption)
-                        .foregroundColor(.gray)
-                    Spacer()
-                    Text("\(standings.conference_rank)th in \(standings.conference)")
-                        .font(.subheadline)
-                        .foregroundColor(.white)
-                }
-                
-                // Streak
-                if !standings.streak.isEmpty {
-                    HStack {
-                        Text("Streak")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                        Spacer()
-                        Text(standings.streak)
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(standings.streak.hasPrefix("W") ? .green : .red)
-                    }
-                }
+            HStack(alignment: .center, spacing: 3) {
+                Text("\(standings.wins)")
+                    .font(.system(size: 36, weight: .black))
+                    .foregroundColor(.green)
+                Text("-")
+                    .font(.system(size: 28, weight: .bold))
+                    .foregroundColor(.secondary)
+                Text("\(standings.losses)")
+                    .font(.system(size: 36, weight: .black))
+                    .foregroundColor(.red)
+            }
+            
+            Divider()
+            
+            HStack {
+                Text("#\(standings.conference_rank)")
+                    .font(.system(size: 16, weight: .bold))
+                Text(standings.conference)
+                    .font(.system(size: 16, weight: .semibold))
+                Spacer()
             }
         }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(Color.black)
+        .padding(6)
     }
 }
 
@@ -204,9 +183,7 @@ struct MediumTeamStandingView: View {
                 }
             }
         }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(Color.black)
+        .padding(6)
     }
 }
 
@@ -218,11 +195,7 @@ struct TeamStandingWidget: Widget {
         AppIntentConfiguration(kind: kind, intent: ConfigureTeamIntent.self, provider: TeamStandingProvider()) { entry in
             if #available(iOS 17.0, *) {
                 TeamStandingWidgetEntryView(entry: entry)
-                    .containerBackground(Color.black, for: .widget)
-            } else {
-                TeamStandingWidgetEntryView(entry: entry)
-                    .padding()
-                    .background(Color.black)
+                    .containerBackground(for: .widget) {}
             }
         }
         .configurationDisplayName("Team Standing")

@@ -96,32 +96,29 @@ struct SmallNextGamesView: View {
     let entry: NextGamesEntry
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            // Header
-            HStack {
-                Text("Next Games")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                Spacer()
-                if let standings = entry.standings {
-                    Text("\(standings.abbreviation) (\(standings.wins)-\(standings.losses))")
-                        .font(.caption)
-                        .foregroundColor(.gray)
+        VStack(alignment: .leading, spacing: 3) {
+            // Compact header
+            if let standings = entry.standings {
+                HStack(alignment: .center, spacing: 6) {
+                    Text(standings.abbreviation)
+                        .font(.system(size: 17, weight: .black))
+                    Text("\(standings.wins)-\(standings.losses)")
+                        .font(.system(size: 14, weight: .bold))
+                        .foregroundColor(.secondary)
+                    Spacer()
                 }
             }
             
-            // Games list
-            VStack(alignment: .leading, spacing: 6) {
+            Divider()
+            
+            // Compact game list
+            VStack(alignment: .leading, spacing: 5) {
                 ForEach(Array(entry.games.prefix(3).enumerated()), id: \.element.game_id) { index, game in
-                    GameRow(game: game, isCompact: true)
+                    CompactGameRow(game: game)
                 }
             }
-            
-            Spacer()
         }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(Color.black)
+        .padding(6)
     }
 }
 
@@ -129,38 +126,44 @@ struct MediumNextGamesView: View {
     let entry: NextGamesEntry
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            // Header with standings
+        VStack(alignment: .leading, spacing: 4) {
+            // Compact header with more info
             if let standings = entry.standings {
-                HStack {
-                    Text(standings.team_name)
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
+                HStack(alignment: .center, spacing: 8) {
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(standings.abbreviation)
+                            .font(.system(size: 19, weight: .black))
+                        Text("#\(standings.conference_rank) \(standings.conference)")
+                            .font(.system(size: 11, weight: .semibold))
+                            .foregroundColor(.secondary)
+                    }
+                    
                     Spacer()
-                    Text("\(standings.wins)-\(standings.losses)")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
+                    
+                    HStack(spacing: 2) {
+                        Text("\(standings.wins)")
+                            .font(.system(size: 26, weight: .black))
+                            .foregroundColor(.green)
+                        Text("-")
+                            .font(.system(size: 22, weight: .bold))
+                            .foregroundColor(.secondary)
+                        Text("\(standings.losses)")
+                            .font(.system(size: 26, weight: .black))
+                            .foregroundColor(.red)
+                    }
                 }
             }
             
-            Text("Next 3 Games")
-                .font(.headline)
-                .foregroundColor(.gray)
+            Divider()
             
-            // Games list
-            VStack(alignment: .leading, spacing: 10) {
+            // Compact game list with more details
+            VStack(alignment: .leading, spacing: 7) {
                 ForEach(Array(entry.games.prefix(3).enumerated()), id: \.element.game_id) { index, game in
-                    GameRow(game: game, isCompact: false)
+                    MediumGameRow(game: game)
                 }
             }
-            
-            Spacer()
         }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(Color.black)
+        .padding(6)
     }
 }
 
@@ -170,13 +173,11 @@ struct GameRow: View {
     
     var body: some View {
         HStack(spacing: 8) {
-            // VS indicator
             Text(game.is_home ? "vs" : "@")
                 .font(.caption)
                 .foregroundColor(.gray)
                 .frame(width: 25, alignment: .leading)
             
-            // Opponent
             Text(game.opponent)
                 .font(isCompact ? .caption : .subheadline)
                 .fontWeight(.semibold)
@@ -184,7 +185,6 @@ struct GameRow: View {
             
             Spacer()
             
-            // Date/Time
             if let date = NBAAPIService.parseUTCDate(game.datetime_utc) {
                 Text(formatGameDate(date, isCompact: isCompact))
                     .font(.caption)
@@ -207,24 +207,98 @@ struct GameRow: View {
     }
 }
 
+// MARK: - Compact Components
+
+struct CompactGameRow: View {
+    let game: NBAGame
+    
+    var body: some View {
+        HStack(spacing: 4) {
+            Text(game.is_home ? "vs" : "@")
+                .font(.system(size: 11, weight: .semibold))
+                .foregroundColor(.secondary)
+                .frame(width: 20)
+            
+            Text(game.opponent)
+                .font(.system(size: 14, weight: .bold))
+                .frame(minWidth: 40, alignment: .leading)
+            
+            Spacer()
+            
+            if let date = NBAAPIService.parseUTCDate(game.datetime_utc) {
+                Text(formatCompactDate(date))
+                    .font(.system(size: 11, weight: .semibold))
+                    .foregroundColor(.secondary)
+            }
+        }
+    }
+    
+    private func formatCompactDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "MMM d"
+        return formatter.string(from: date)
+    }
+}
+
+struct MediumGameRow: View {
+    let game: NBAGame
+    
+    var body: some View {
+        HStack(spacing: 6) {
+            Text(game.is_home ? "vs" : "@")
+                .font(.system(size: 12, weight: .bold))
+                .foregroundColor(game.is_home ? .green : .blue)
+                .frame(width: 24)
+            
+            Text(game.opponent)
+                .font(.system(size: 15, weight: .bold))
+                .frame(minWidth: 45, alignment: .leading)
+            
+            Spacer()
+            
+            if let date = NBAAPIService.parseUTCDate(game.datetime_utc) {
+                VStack(alignment: .trailing, spacing: 0) {
+                    Text(formatDate(date))
+                        .font(.system(size: 12, weight: .bold))
+                    Text(formatTime(date))
+                        .font(.system(size: 11, weight: .semibold))
+                        .foregroundColor(.secondary)
+                }
+            }
+        }
+    }
+    
+    private func formatDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "E MMM d"
+        return formatter.string(from: date)
+    }
+    
+    private func formatTime(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "h:mm a"
+        return formatter.string(from: date)
+    }
+}
+
 struct ErrorView: View {
     let error: String
     
     var body: some View {
-        VStack {
+        VStack(spacing: 8) {
             Image(systemName: "exclamationmark.triangle")
                 .foregroundColor(.red)
             Text("Error")
                 .font(.headline)
-                .foregroundColor(.white)
             Text(error)
                 .font(.caption)
-                .foregroundColor(.gray)
+                .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
         }
         .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.black)
     }
 }
 
@@ -235,11 +309,9 @@ struct EmptyView: View {
         VStack {
             Text(message)
                 .font(.headline)
-                .foregroundColor(.gray)
+                .foregroundColor(.secondary)
         }
         .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.black)
     }
 }
 
@@ -251,11 +323,7 @@ struct NextGamesWidget: Widget {
         AppIntentConfiguration(kind: kind, intent: ConfigureTeamIntent.self, provider: NextGamesProvider()) { entry in
             if #available(iOS 17.0, *) {
                 NextGamesWidgetEntryView(entry: entry)
-                    .containerBackground(Color.black, for: .widget)
-            } else {
-                NextGamesWidgetEntryView(entry: entry)
-                    .padding()
-                    .background(Color.black)
+                    .containerBackground(for: .widget) {}
             }
         }
         .configurationDisplayName("Next 3 Games")

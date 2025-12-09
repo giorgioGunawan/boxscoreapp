@@ -89,46 +89,98 @@ struct SmallSeasonAverageView: View {
     let averages: SeasonAverages
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            // Player name and jersey
-            HStack {
-                Text(averages.player_name)
-                    .font(.headline)
-                    .foregroundColor(.white)
-                if let jersey = averages.jersey_number {
-                    Text("| \(jersey)")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
+        ZStack(alignment: .topLeading) {
+            // Big opaque jersey number as background
+            if let jersey = averages.jersey_number {
+                Text(jersey)
+                    .font(.system(size: 80, weight: .black))
+                    .foregroundColor(.primary.opacity(0.08))
+                    .offset(x: -10, y: -15)
+            }
+            
+            VStack(alignment: .leading, spacing: 3) {
+                // Player name
+                VStack(alignment: .leading, spacing: 0) {
+                    let nameParts = averages.player_name.split(separator: " ")
+                    if nameParts.count >= 2 {
+                        Text(String(nameParts.first ?? ""))
+                            .font(.system(size: 16, weight: .black))
+                            .lineLimit(1)
+                        Text(String(nameParts.last ?? ""))
+                            .font(.system(size: 16, weight: .black))
+                            .lineLimit(1)
+                    } else {
+                        Text(averages.player_name)
+                            .font(.system(size: 16, weight: .black))
+                            .lineLimit(2)
+                    }
+                }
+                
+                Divider()
+                
+                // Main stats - horizontal layout with equal spacing
+                VStack(alignment: .leading, spacing: 1) {
+                    HStack {
+                        Text(String(format: "%.1f", averages.pts))
+                            .font(.system(size: 18, weight: .black))
+                        Spacer()
+                        Text(String(format: "%.1f", averages.reb))
+                            .font(.system(size: 18, weight: .black))
+                        Spacer()
+                        Text(String(format: "%.1f", averages.ast))
+                            .font(.system(size: 18, weight: .black))
+                    }
+                    HStack {
+                        Text("ppg")
+                            .font(.system(size: 9, weight: .medium))
+                            .foregroundColor(.secondary)
+                        Spacer()
+                        Text("rpg")
+                            .font(.system(size: 9, weight: .medium))
+                            .foregroundColor(.secondary)
+                        Spacer()
+                        Text("apg")
+                            .font(.system(size: 9, weight: .medium))
+                            .foregroundColor(.secondary)
+                    }
+                }
+                
+                Divider()
+                
+                // Shooting percentages - aligned with name
+                VStack(alignment: .leading, spacing: 1) {
+                    HStack(spacing: 10) {
+                        Text(String(format: "%.1f%%", averages.fg_pct))
+                            .font(.system(size: 11, weight: .bold))
+                            .fixedSize()
+                            .frame(width: 36, alignment: .leading)
+                        Text(String(format: "%.1f%%", averages.fg3_pct))
+                            .font(.system(size: 11, weight: .bold))
+                            .fixedSize()
+                            .frame(width: 36, alignment: .leading)
+                        Text(String(format: "%.1f%%", averages.ft_pct))
+                            .font(.system(size: 11, weight: .bold))
+                            .fixedSize()
+                            .frame(width: 36, alignment: .leading)
+                    }
+                    HStack(spacing: 10) {
+                        Text("FG%")
+                            .font(.system(size: 8, weight: .medium))
+                            .foregroundColor(.secondary)
+                            .frame(width: 36, alignment: .leading)
+                        Text("3P%")
+                            .font(.system(size: 8, weight: .medium))
+                            .foregroundColor(.secondary)
+                            .frame(width: 36, alignment: .leading)
+                        Text("FT%")
+                            .font(.system(size: 8, weight: .medium))
+                            .foregroundColor(.secondary)
+                            .frame(width: 36, alignment: .leading)
+                    }
                 }
             }
-            
-            Spacer()
-            
-            // Main stats
-            VStack(alignment: .leading, spacing: 4) {
-                StatRow(label: "PTS", value: String(format: "%.1f", averages.pts))
-                StatRow(label: "AST", value: String(format: "%.1f", averages.ast))
-                StatRow(label: "REB", value: String(format: "%.1f", averages.reb))
-            }
-            
-            Spacer()
-            
-            // Percentages
-            HStack(spacing: 8) {
-                Text("\(Int(averages.fg_pct * 100))% FG")
-                    .font(.caption2)
-                    .foregroundColor(.gray)
-                Text("\(Int(averages.fg3_pct * 100))% 3FG")
-                    .font(.caption2)
-                    .foregroundColor(.gray)
-                Text("\(Int(averages.ft_pct * 100))% FT")
-                    .font(.caption2)
-                    .foregroundColor(.gray)
-            }
+            .padding(6)
         }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(Color.black)
     }
 }
 
@@ -136,59 +188,100 @@ struct MediumSeasonAverageView: View {
     let averages: SeasonAverages
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            // Header
-            HStack {
-                Text(averages.player_name)
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                Spacer()
-                if let jersey = averages.jersey_number {
-                    Text("#\(jersey)")
-                        .font(.title3)
-                        .foregroundColor(.gray)
-                }
+        ZStack(alignment: .topLeading) {
+            // Big opaque jersey number as background
+            if let jersey = averages.jersey_number {
+                Text(jersey)
+                    .font(.system(size: 120, weight: .black))
+                    .foregroundColor(.primary.opacity(0.06))
+                    .offset(x: -15, y: -20)
             }
             
-            // Main stats grid
-            HStack(spacing: 20) {
-                VStack(alignment: .leading, spacing: 8) {
-                    StatRow(label: "PTS", value: String(format: "%.1f", averages.pts))
-                    StatRow(label: "AST", value: String(format: "%.1f", averages.ast))
-                    StatRow(label: "REB", value: String(format: "%.1f", averages.reb))
+            VStack(alignment: .leading, spacing: 5) {
+                // Player name
+                VStack(alignment: .leading, spacing: 0) {
+                    let nameParts = averages.player_name.split(separator: " ")
+                    if nameParts.count >= 2 {
+                        Text(String(nameParts.first ?? ""))
+                            .font(.system(size: 20, weight: .black))
+                            .lineLimit(1)
+                        Text(String(nameParts.last ?? ""))
+                            .font(.system(size: 20, weight: .black))
+                            .lineLimit(1)
+                    } else {
+                        Text(averages.player_name)
+                            .font(.system(size: 20, weight: .black))
+                            .lineLimit(2)
+                    }
                 }
                 
-                VStack(alignment: .leading, spacing: 8) {
-                    StatRow(label: "STL", value: String(format: "%.1f", averages.stl))
-                    StatRow(label: "BLK", value: String(format: "%.1f", averages.blk))
-                    StatRow(label: "MIN", value: String(format: "%.1f", averages.minutes))
+                Divider()
+                
+                // Main stats - horizontal layout
+                VStack(alignment: .leading, spacing: 1) {
+                    HStack(spacing: 0) {
+                        Text(String(format: "%.1f", averages.pts))
+                            .font(.system(size: 20, weight: .black))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text(String(format: "%.1f", averages.reb))
+                            .font(.system(size: 20, weight: .black))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text(String(format: "%.1f", averages.ast))
+                            .font(.system(size: 20, weight: .black))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    HStack(spacing: 0) {
+                        Text("ppg")
+                            .font(.system(size: 10, weight: .medium))
+                            .foregroundColor(.secondary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("rpg")
+                            .font(.system(size: 10, weight: .medium))
+                            .foregroundColor(.secondary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text("apg")
+                            .font(.system(size: 10, weight: .medium))
+                            .foregroundColor(.secondary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                }
+                
+                Divider()
+                
+                // Shooting percentages - aligned with name
+                VStack(alignment: .leading, spacing: 1) {
+                    HStack(spacing: 10) {
+                        Text(String(format: "%.1f%%", averages.fg_pct))
+                            .font(.system(size: 11, weight: .bold))
+                            .fixedSize()
+                            .frame(width: 36, alignment: .leading)
+                        Text(String(format: "%.1f%%", averages.fg3_pct))
+                            .font(.system(size: 11, weight: .bold))
+                            .fixedSize()
+                            .frame(width: 36, alignment: .leading)
+                        Text(String(format: "%.1f%%", averages.ft_pct))
+                            .font(.system(size: 11, weight: .bold))
+                            .fixedSize()
+                            .frame(width: 36, alignment: .leading)
+                    }
+                    HStack(spacing: 10) {
+                        Text("FG%")
+                            .font(.system(size: 8, weight: .medium))
+                            .foregroundColor(.secondary)
+                            .frame(width: 36, alignment: .leading)
+                        Text("3P%")
+                            .font(.system(size: 8, weight: .medium))
+                            .foregroundColor(.secondary)
+                            .frame(width: 36, alignment: .leading)
+                        Text("FT%")
+                            .font(.system(size: 8, weight: .medium))
+                            .foregroundColor(.secondary)
+                            .frame(width: 36, alignment: .leading)
+                    }
                 }
             }
-            
-            Spacer()
-            
-            // Percentages
-            HStack(spacing: 12) {
-                Text("\(Int(averages.fg_pct * 100))% FG")
-                    .font(.caption)
-                    .foregroundColor(.gray)
-                Text("\(Int(averages.fg3_pct * 100))% 3FG")
-                    .font(.caption)
-                    .foregroundColor(.gray)
-                Text("\(Int(averages.ft_pct * 100))% FT")
-                    .font(.caption)
-                    .foregroundColor(.gray)
-            }
-            
-            // Games played
-            Text("\(averages.games_played) games")
-                .font(.caption)
-                .foregroundColor(.gray)
+            .padding(6)
         }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(Color.black)
     }
 }
 
@@ -210,6 +303,37 @@ struct StatRow: View {
     }
 }
 
+// MARK: - Compact Components
+
+struct StatLabel: View {
+    let label: String
+    let value: String
+    
+    var body: some View {
+        HStack(spacing: 4) {
+            Text(label)
+                .font(.system(size: 11, weight: .medium))
+                .foregroundColor(.secondary)
+            Text(value)
+                .font(.system(size: 15, weight: .bold))
+        }
+    }
+}
+
+struct CompactStat: View {
+    let value: Int
+    let label: String
+    
+    var body: some View {
+        HStack(spacing: 2) {
+            Text("\(value)")
+                .font(.system(size: 11, weight: .bold))
+            Text(label)
+                .font(.system(size: 9, weight: .medium))
+        }
+    }
+}
+
 @available(iOS 17.0, *)
 struct SeasonAverageWidget: Widget {
     let kind: String = "SeasonAverageWidget"
@@ -218,11 +342,7 @@ struct SeasonAverageWidget: Widget {
         AppIntentConfiguration(kind: kind, intent: ConfigurePlayerIntent.self, provider: SeasonAverageProvider()) { entry in
             if #available(iOS 17.0, *) {
                 SeasonAverageWidgetEntryView(entry: entry)
-                    .containerBackground(Color.black, for: .widget)
-            } else {
-                SeasonAverageWidgetEntryView(entry: entry)
-                    .padding()
-                    .background(Color.black)
+                    .containerBackground(for: .widget) {}
             }
         }
         .configurationDisplayName("Season Average")

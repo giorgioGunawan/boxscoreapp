@@ -93,22 +93,19 @@ struct SmallLastGamesView: View {
     let entry: LastGamesEntry
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Last 3 Games")
-                .font(.headline)
-                .foregroundColor(.white)
+        VStack(alignment: .leading, spacing: 3) {
+            Text("Last 3 Results")
+                .font(.system(size: 13, weight: .bold))
+            
+            Divider()
             
             VStack(alignment: .leading, spacing: 6) {
                 ForEach(Array(entry.games.prefix(3).enumerated()), id: \.element.game_id) { index, game in
-                    LastGameRow(game: game, isCompact: true)
+                    CompactResultRow(game: game)
                 }
             }
-            
-            Spacer()
         }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(Color.black)
+        .padding(6)
     }
 }
 
@@ -116,23 +113,19 @@ struct MediumLastGamesView: View {
     let entry: LastGamesEntry
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Last 3 Games")
-                .font(.title3)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
+        VStack(alignment: .leading, spacing: 6) {
+            Text("Recent Results")
+                .font(.system(size: 16, weight: .bold))
+            
+            Divider()
             
             VStack(alignment: .leading, spacing: 10) {
                 ForEach(Array(entry.games.prefix(3).enumerated()), id: \.element.game_id) { index, game in
-                    LastGameRow(game: game, isCompact: false)
+                    DetailedResultRow(game: game)
                 }
             }
-            
-            Spacer()
         }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .background(Color.black)
+        .padding(6)
     }
 }
 
@@ -142,7 +135,6 @@ struct LastGameRow: View {
     
     var body: some View {
         HStack(spacing: 8) {
-            // Date
             if let date = NBAAPIService.parseUTCDate(game.datetime_utc) {
                 Text(formatDate(date))
                     .font(.caption)
@@ -150,12 +142,10 @@ struct LastGameRow: View {
                     .frame(width: 50, alignment: .leading)
             }
             
-            // VS indicator
             Text(game.is_home ? "vs" : "@")
                 .font(.caption)
                 .foregroundColor(.gray)
             
-            // Opponent
             Text(game.opponent)
                 .font(isCompact ? .caption : .subheadline)
                 .fontWeight(.semibold)
@@ -163,14 +153,12 @@ struct LastGameRow: View {
             
             Spacer()
             
-            // Score and result
             if let teamScore = game.team_score, let opponentScore = game.opponent_score {
                 HStack(spacing: 4) {
                     Text("\(teamScore) - \(opponentScore)")
                         .font(isCompact ? .caption : .subheadline)
                         .foregroundColor(.white)
                     
-                    // Win/Loss indicator
                     if let result = game.result {
                         Text(result)
                             .font(.caption)
@@ -191,6 +179,82 @@ struct LastGameRow: View {
     }
 }
 
+struct CompactResultRow: View {
+    let game: NBAGame
+    
+    var body: some View {
+        HStack(spacing: 4) {
+            if let result = game.result {
+                Text(result)
+                    .font(.system(size: 14, weight: .black))
+                    .foregroundColor(result == "W" ? .green : .red)
+                    .frame(width: 16)
+            }
+            
+            Text(game.is_home ? "vs" : "@")
+                .font(.system(size: 11, weight: .semibold))
+                .foregroundColor(.secondary)
+                .frame(width: 20)
+            
+            Text(game.opponent)
+                .font(.system(size: 14, weight: .bold))
+                .lineLimit(1)
+            
+            Spacer()
+            
+            if let teamScore = game.team_score, let opponentScore = game.opponent_score {
+                Text("\(teamScore)-\(opponentScore)")
+                    .font(.system(size: 15, weight: .bold))
+            }
+        }
+    }
+}
+
+struct DetailedResultRow: View {
+    let game: NBAGame
+    
+    var body: some View {
+        HStack(spacing: 10) {
+            if let result = game.result {
+                Text(result)
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundColor(result == "W" ? .green : .red)
+                    .frame(width: 22)
+            }
+            
+            VStack(alignment: .leading, spacing: 1) {
+                HStack(spacing: 4) {
+                    Text(game.is_home ? "vs" : "@")
+                        .font(.system(size: 12, weight: .medium))
+                        .foregroundColor(game.is_home ? .green : .blue)
+                    Text(game.opponent)
+                        .font(.system(size: 14, weight: .bold))
+                }
+                
+                if let date = NBAAPIService.parseUTCDate(game.datetime_utc) {
+                    Text(formatDate(date))
+                        .font(.system(size: 11, weight: .medium))
+                        .foregroundColor(.secondary)
+                }
+            }
+            
+            Spacer()
+            
+            if let teamScore = game.team_score, let opponentScore = game.opponent_score {
+                Text("\(teamScore)-\(opponentScore)")
+                    .font(.system(size: 18, weight: .bold))
+            }
+        }
+    }
+    
+    private func formatDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "E MMM d"
+        return formatter.string(from: date)
+    }
+}
+
 @available(iOS 17.0, *)
 struct LastGamesWidget: Widget {
     let kind: String = "LastGamesWidget"
@@ -199,11 +263,7 @@ struct LastGamesWidget: Widget {
         AppIntentConfiguration(kind: kind, intent: ConfigureTeamIntent.self, provider: LastGamesProvider()) { entry in
             if #available(iOS 17.0, *) {
                 LastGamesWidgetEntryView(entry: entry)
-                    .containerBackground(Color.black, for: .widget)
-            } else {
-                LastGamesWidgetEntryView(entry: entry)
-                    .padding()
-                    .background(Color.black)
+                    .containerBackground(for: .widget) {}
             }
         }
         .configurationDisplayName("Last 3 Results")
