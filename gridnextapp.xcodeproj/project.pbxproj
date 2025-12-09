@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		446CC7922EE6D9FB007C2F07 /* NBAAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446CC7792EE6D9FB007C2F07 /* NBAAPIService.swift */; };
-		446CC7932EE6D9FB007C2F07 /* NBAModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446CC77A2EE6D9FB007C2F07 /* NBAModels.swift */; };
-		446CC79C2EE6D9FB007C2F07 /* players_db.json in Resources */ = {isa = PBXBuildFile; fileRef = 446CC77B2EE6D9FB007C2F07 /* players_db.json */; };
 		446CC7A22EE6DF12007C2F07 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F577A32DDF5538005F1BF4 /* WidgetKit.framework */; };
 		446CC7A32EE6DF12007C2F07 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F577A52DDF5538005F1BF4 /* SwiftUI.framework */; };
 		446CC7B42EE6DF13007C2F07 /* BoxScoreWidgetExtensionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 446CC7A12EE6DF12007C2F07 /* BoxScoreWidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -34,7 +31,6 @@
 		D0F5778F2DDF5336005F1BF4 /* gridnextappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F5778E2DDF5336005F1BF4 /* gridnextappUITests.swift */; };
 		D0F577912DDF5336005F1BF4 /* gridnextappUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577902DDF5336005F1BF4 /* gridnextappUITestsLaunchTests.swift */; };
 		D0F577C52DE13672005F1BF4 /* F1RaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577C42DE13672005F1BF4 /* F1RaceView.swift */; };
-		D0F577DC2DE1387C005F1BF4 /* F1SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577DA2DE1387C005F1BF4 /* F1SharedData.swift */; };
 		D0F577DD2DE1387C005F1BF4 /* F1RaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577DB2DE1387C005F1BF4 /* F1RaceModel.swift */; };
 		D0F577E12DE13967005F1BF4 /* F1RaceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F577E02DE13967005F1BF4 /* F1RaceStyle.swift */; };
 /* End PBXBuildFile section */
@@ -79,9 +75,6 @@
 
 /* Begin PBXFileReference section */
 		446CC7782EE6D9FB007C2F07 /* BoxScoreWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BoxScoreWidgetExtension.entitlements; sourceTree = "<group>"; };
-		446CC7792EE6D9FB007C2F07 /* NBAAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAAPIService.swift; sourceTree = "<group>"; };
-		446CC77A2EE6D9FB007C2F07 /* NBAModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAModels.swift; sourceTree = "<group>"; };
-		446CC77B2EE6D9FB007C2F07 /* players_db.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = players_db.json; sourceTree = "<group>"; };
 		446CC7A12EE6DF12007C2F07 /* BoxScoreWidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BoxScoreWidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D04924752DF3FB02008DC731 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = gridnextapp/SettingsView.swift; sourceTree = "<group>"; };
 		D04924762DF3FB02008DC731 /* WidgetDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WidgetDetailView.swift; path = gridnextapp/WidgetDetailView.swift; sourceTree = "<group>"; };
@@ -122,7 +115,6 @@
 		D0F577C12DE13621005F1BF4 /* gridnextapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gridnextapp.entitlements; sourceTree = "<group>"; };
 		D0F577C42DE13672005F1BF4 /* F1RaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F1RaceView.swift; sourceTree = "<group>"; };
 		D0F577C62DE13698005F1BF4 /* F1RaceWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = F1RaceWidgetExtension.entitlements; sourceTree = "<group>"; };
-		D0F577DA2DE1387C005F1BF4 /* F1SharedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F1SharedData.swift; sourceTree = "<group>"; };
 		D0F577DB2DE1387C005F1BF4 /* F1RaceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F1RaceModel.swift; sourceTree = "<group>"; };
 		D0F577E02DE13967005F1BF4 /* F1RaceStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = F1RaceStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -209,7 +201,6 @@
 				D08EA1282DEAE500007D5E8D /* F1RaceResultExtension.entitlements */,
 				D0F577E02DE13967005F1BF4 /* F1RaceStyle.swift */,
 				D0F577DB2DE1387C005F1BF4 /* F1RaceModel.swift */,
-				D0F577DA2DE1387C005F1BF4 /* F1SharedData.swift */,
 				D0F577C62DE13698005F1BF4 /* F1RaceWidgetExtension.entitlements */,
 				D0F577722DDF5334005F1BF4 /* gridnextapp */,
 				D0F577832DDF5336005F1BF4 /* gridnextappTests */,
@@ -221,9 +212,6 @@
 				D0F577712DDF5334005F1BF4 /* Products */,
 				446CC7772EE6D9FB007C2F07 /* BoxScoreWidget */,
 				446CC7782EE6D9FB007C2F07 /* BoxScoreWidgetExtension.entitlements */,
-				446CC7792EE6D9FB007C2F07 /* NBAAPIService.swift */,
-				446CC77A2EE6D9FB007C2F07 /* NBAModels.swift */,
-				446CC77B2EE6D9FB007C2F07 /* players_db.json */,
 			);
 			sourceTree = "<group>";
 		};
@@ -446,7 +434,6 @@
 			files = (
 				D0F5777B2DDF5335005F1BF4 /* Preview Assets.xcassets in Resources */,
 				D0F577782DDF5335005F1BF4 /* Assets.xcassets in Resources */,
-				446CC79C2EE6D9FB007C2F07 /* players_db.json in Resources */,
 				D05507952DF0870C00D73287 /* Fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,15 +467,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0F577DD2DE1387C005F1BF4 /* F1RaceModel.swift in Sources */,
-				446CC7922EE6D9FB007C2F07 /* NBAAPIService.swift in Sources */,
-				446CC7932EE6D9FB007C2F07 /* NBAModels.swift in Sources */,
 				D08EA16F2DEDAEBF007D5E8D /* ConstructorIntent.intentdefinition in Sources */,
 				D08EA1652DEC7EF4007D5E8D /* DriverIntent.intentdefinition in Sources */,
 				D0F577C52DE13672005F1BF4 /* F1RaceView.swift in Sources */,
 				D04924832DF722E5008DC731 /* SubscriptionManager.swift in Sources */,
 				D08EA16A2DEC80AC007D5E8D /* DriverAppEnum.swift in Sources */,
 				D04924872DF9B745008DC731 /* SubscriptionHelper.swift in Sources */,
-				D0F577DC2DE1387C005F1BF4 /* F1SharedData.swift in Sources */,
 				D08EA17B2DEDAFB2007D5E8D /* ConstructorAppEnum.swift in Sources */,
 				D04924862DF9B745008DC731 /* PremiumWidgetView.swift in Sources */,
 				D04924772DF3FB02008DC731 /* SettingsView.swift in Sources */,

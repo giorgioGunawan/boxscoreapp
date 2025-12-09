@@ -163,11 +163,19 @@ struct ConfigurePlayerIntent: WidgetConfigurationIntent {
 @main
 struct BoxScoreWidgetExtensionBundle: WidgetBundle {
     var body: some Widget {
+        // Home Screen Widgets
         NextGamesWidget()
         SeasonAverageWidget()
         LastGamesWidget()
         TeamStandingWidget()
         PlayerLastGameWidget()
         CountdownWidget()
+        
+        // Lock Screen Widgets
+        if #available(iOS 17.0, *) {
+            LockScreenNextGameWidget()
+            LockScreenPlayerStatsWidget()
+            LockScreenTeamRecordWidget()
+        }
     }
 }

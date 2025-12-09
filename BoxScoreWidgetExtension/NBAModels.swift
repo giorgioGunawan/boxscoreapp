@@ -19,12 +19,15 @@ struct TeamsResponse: Codable {
 struct TeamStandings: Codable {
     let team_id: Int
     let team_name: String
-    let abbreviation: String
+    let team_abbreviation: String  // API returns team_abbreviation, not abbreviation
     let conference: String
     let wins: Int
     let losses: Int
     let conference_rank: Int
     let streak: String
+    
+    // Convenience accessor for compatibility
+    var abbreviation: String { team_abbreviation }
 }
 
 // MARK: - Game Models
@@ -60,37 +63,43 @@ struct LastGamesResponse: Codable {
 // MARK: - Player Models
 
 struct PlayerInfo: Codable {
-    let player_id: Int?
     let nba_player_id: Int
-    let player_name: String
-    let jersey_number: Int?
+    let full_name: String  // API returns full_name
+    let position: String?
     let team_id: Int?
-    let team_name: String?
-    let team_abbreviation: String?
+    
+    // Convenience accessor
+    var player_name: String { full_name }
 }
 
 struct SeasonAverages: Codable {
     let player_id: Int?
-    let nba_player_id: Int
     let player_name: String
-    let jersey_number: Int?
+    let jersey_number: String?  // API returns String, not Int
     let season: String
-    let pts: Double
-    let reb: Double
-    let ast: Double
-    let stl: Double
-    let blk: Double
+    let ppg: Double  // API uses ppg not pts
+    let rpg: Double  // API uses rpg not reb
+    let apg: Double  // API uses apg not ast
+    let spg: Double  // API uses spg not stl
+    let bpg: Double  // API uses bpg not blk
     let fg_pct: Double
     let fg3_pct: Double
     let ft_pct: Double
     let games_played: Int
     let minutes: Double
+    
+    // Convenience accessors for compatibility
+    var pts: Double { ppg }
+    var reb: Double { rpg }
+    var ast: Double { apg }
+    var stl: Double { spg }
+    var blk: Double { bpg }
 }
 
 struct PlayerLatestGame: Codable {
     let player_id: Int?
     let player_name: String
-    let jersey_number: Int?
+    let jersey_number: String?  // API returns String, not Int
     let season: String
     let game_date: String
     let datetime_utc: String
@@ -101,9 +110,9 @@ struct PlayerLatestGame: Codable {
     let ast: Int
     let stl: Int
     let blk: Int
-    let fg_pct: Double
-    let fg3_pct: Double
-    let ft_pct: Double
+    let fg_pct: Double?  // May be null
+    let fg3_pct: Double?  // May be null
+    let ft_pct: Double?  // May be null
 }
 
 // MARK: - Player Database Model

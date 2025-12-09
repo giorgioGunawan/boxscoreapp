@@ -239,7 +239,7 @@ struct TeamStandingWidget: Widget {
         standings: TeamStandings(
             team_id: 2,
             team_name: "Golden State Warriors",
-            abbreviation: "GSW",
+            team_abbreviation: "GSW",
             conference: "West",
             wins: 11,
             losses: 11,

@@ -276,9 +276,24 @@ enum APIError: Error {
 
 extension NBAAPIService {
     static func parseUTCDate(_ dateString: String) -> Date? {
+        // Try with fractional seconds first
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        return formatter.date(from: dateString)
+        if let date = formatter.date(from: dateString) {
+            return date
+        }
+        
+        // Try without fractional seconds
+        formatter.formatOptions = [.withInternetDateTime]
+        if let date = formatter.date(from: dateString) {
+            return date
+        }
+        
+        // Fallback: try basic date formatter
+        let basicFormatter = DateFormatter()
+        basicFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        basicFormatter.locale = Locale(identifier: "en_US_POSIX")
+        return basicFormatter.date(from: dateString)
     }
     
     static func formatLocalDate(_ date: Date, style: DateFormatter.Style = .medium) -> String {

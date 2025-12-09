@@ -173,13 +173,13 @@ struct MediumPlayerLastGameView: View {
             
             // Percentages
             HStack(spacing: 12) {
-                Text("\(Int(game.fg_pct * 100))% FG")
+                Text("\(Int((game.fg_pct ?? 0) * 100))% FG")
                     .font(.caption)
                     .foregroundColor(.gray)
-                Text("\(Int(game.fg3_pct * 100))% 3FG")
+                Text("\(Int((game.fg3_pct ?? 0) * 100))% 3FG")
                     .font(.caption)
                     .foregroundColor(.gray)
-                Text("\(Int(game.ft_pct * 100))% FT")
+                Text("\(Int((game.ft_pct ?? 0) * 100))% FT")
                     .font(.caption)
                     .foregroundColor(.gray)
             }
@@ -230,7 +230,7 @@ struct PlayerLastGameWidget: Widget {
         game: PlayerLatestGame(
             player_id: 1,
             player_name: "Stephen Curry",
-            jersey_number: 30,
+            jersey_number: "30",
             season: "2025-26",
             game_date: "05 Dec 2025",
             datetime_utc: "2025-12-05T03:00:00+00:00",
