@@ -7,10 +7,12 @@
 
 import WidgetKit
 import SwiftUI
+import AppIntents
 
-struct CountdownProvider: TimelineProvider {
-    let teamID: Int
-    
+@available(iOS 17.0, *)
+struct CountdownProvider: AppIntentTimelineProvider {
+    typealias Entry = CountdownEntry      // your TimelineEntry type
+    typealias Intent = ConfigureTeamIntent  // or whatever AppIntent you use
     func placeholder(in context: Context) -> CountdownEntry {
         CountdownEntry(
             date: Date(),
@@ -20,30 +22,25 @@ struct CountdownProvider: TimelineProvider {
         )
     }
     
-    func getSnapshot(in context: Context, completion: @escaping (CountdownEntry) -> Void) {
+    func snapshot(for configuration: ConfigureTeamIntent, in context: Context) async -> CountdownEntry {
         if context.isPreview {
-            completion(placeholder(in: context))
-            return
+            return placeholder(in: context)
         }
-        
-        Task {
-            let entry = await loadData()
-            completion(entry)
-        }
+        return await loadData(for: configuration)
     }
     
-    func getTimeline(in context: Context, completion: @escaping (Timeline<CountdownEntry>) -> Void) {
-        Task {
-            let entry = await loadData()
-            // Update every minute for countdown
-            let nextUpdate = Calendar.current.date(byAdding: .minute, value: 1, to: Date()) ?? Date()
-            let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
-            completion(timeline)
-        }
+    func timeline(for configuration: ConfigureTeamIntent, in context: Context) async -> Timeline<CountdownEntry> {
+        let entry = await loadData(for: configuration)
+        let nextUpdate = Calendar.current.date(byAdding: .minute, value: 1, to: Date()) ?? Date()
+        return Timeline(entries: [entry], policy: .after(nextUpdate))
     }
     
-    private func loadData() async -> CountdownEntry {
+    private func loadData(for configuration: ConfigureTeamIntent) async -> CountdownEntry {
+        guard let teamAbbr = configuration.team?.id else {
+            return CountdownEntry(date: Date(), game: nil, error: "No team selected", isPreview: false)
+        }
         do {
+            let teamID = try await NBAAPIService.shared.getTeamID(for: teamAbbr)
             let gamesResponse = try await NBAAPIService.shared.getNextGame(teamID: teamID)
             let game = gamesResponse.games.first
             return CountdownEntry(
@@ -246,11 +243,12 @@ func formatGameTime(_ date: Date) -> String {
     return formatter.string(from: date)
 }
 
+@available(iOS 17.0, *)
 struct CountdownWidget: Widget {
     let kind: String = "CountdownWidget"
     
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: CountdownProvider(teamID: 2)) { entry in
+        AppIntentConfiguration(kind: kind, intent: ConfigureTeamIntent.self, provider: CountdownProvider()) { entry in
             if #available(iOS 17.0, *) {
                 CountdownWidgetEntryView(entry: entry)
                     .containerBackground(Color.black, for: .widget)

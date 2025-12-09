@@ -1,0 +1,88 @@
+{
+  "source": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/PlayerLastGameWidget.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "vs",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 116
+        }
+      },
+      {
+        "comment": "",
+        "key": "@",
+        "location": {
+          "startingColumn": 44,
+          "startingLine": 116
+        }
+      },
+      {
+        "comment": "",
+        "key": "#%lld",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 151
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld%% FG",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 175
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld%% 3FG",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 178
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld%% FT",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 181
+        }
+      },
+      {
+        "comment": "",
+        "key": "vs",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 188
+        }
+      },
+      {
+        "comment": "",
+        "key": "@",
+        "location": {
+          "startingColumn": 44,
+          "startingLine": 188
+        }
+      },
+      {
+        "comment": "",
+        "key": "Player Last Game",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 217
+        }
+      },
+      {
+        "comment": "",
+        "key": "Shows a player's last game performance.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 218
+        }
+      }
+    ]
+  },
+  "version": 1
+}

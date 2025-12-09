@@ -1,0 +1,992 @@
+[
+  {
+    "typeName": "BoxScoreWidgetExtensionExtension.TeamEntity",
+    "mangledTypeName": "023BoxScoreWidgetExtensionD010TeamEntityV",
+    "kind": "struct",
+    "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+    "line": 14,
+    "conformances": [
+      "AppIntents.AppEntity",
+      "AppIntents.AppValue",
+      "AppIntents.DisplayRepresentable",
+      "Swift.Identifiable",
+      "AppIntents.PersistentlyIdentifiable",
+      "AppIntents.TypeDisplayRepresentable",
+      "AppIntents._IntentValue",
+      "Swift.Sendable",
+      "AppIntents.InstanceDisplayRepresentable",
+      "Swift.SendableMetatype",
+      "Foundation.CustomLocalizedStringResourceConvertible"
+    ],
+    "allConformances": [
+      {
+        "protocolName": "AppIntents.AppEntity",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents.AppValue",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents.DisplayRepresentable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "Swift.Identifiable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents.PersistentlyIdentifiable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents.TypeDisplayRepresentable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents._IntentValue",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "Swift.Sendable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents.InstanceDisplayRepresentable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "Swift.SendableMetatype",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "Foundation.CustomLocalizedStringResourceConvertible",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      }
+    ],
+    "associatedTypeAliases": [
+      {
+        "typeAliasName": "DefaultQuery",
+        "substitutedTypeName": "BoxScoreWidgetExtensionExtension.TeamQuery",
+        "substitutedMangledTypeName": "023BoxScoreWidgetExtensionD09TeamQueryV"
+      },
+      {
+        "typeAliasName": "ID",
+        "substitutedTypeName": "Swift.String",
+        "substitutedMangledTypeName": "SS"
+      },
+      {
+        "typeAliasName": "ValueType",
+        "substitutedTypeName": "BoxScoreWidgetExtensionExtension.TeamEntity",
+        "substitutedMangledTypeName": "023BoxScoreWidgetExtensionD010TeamEntityV"
+      },
+      {
+        "typeAliasName": "UnwrappedType",
+        "substitutedTypeName": "BoxScoreWidgetExtensionExtension.TeamEntity",
+        "substitutedMangledTypeName": "023BoxScoreWidgetExtensionD010TeamEntityV"
+      },
+      {
+        "typeAliasName": "Specification",
+        "substitutedTypeName": "AppIntents.EmptyResolverSpecification<BoxScoreWidgetExtensionExtension.TeamEntity>",
+        "substitutedMangledTypeName": "10AppIntents26EmptyResolverSpecificationVy023BoxScoreWidgetExtensionI010TeamEntityVG"
+      }
+    ],
+    "properties": [
+      {
+        "label": "id",
+        "type": "Swift.String",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "false",
+        "isComputed": "false",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 15,
+        "valueKind": "Runtime"
+      },
+      {
+        "label": "displayString",
+        "type": "Swift.String",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "false",
+        "isComputed": "false",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 16,
+        "valueKind": "Runtime"
+      },
+      {
+        "label": "typeDisplayRepresentation",
+        "type": "AppIntents.TypeDisplayRepresentation",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "true",
+        "isComputed": "false",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 18,
+        "valueKind": "RawLiteral",
+        "value": "NBA Team"
+      },
+      {
+        "label": "defaultQuery",
+        "type": "BoxScoreWidgetExtensionExtension.TeamQuery",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "true",
+        "isComputed": "false",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 19,
+        "valueKind": "InitCall",
+        "value": {
+          "type": "BoxScoreWidgetExtensionExtension.TeamQuery",
+          "arguments": []
+        }
+      },
+      {
+        "label": "displayRepresentation",
+        "type": "AppIntents.DisplayRepresentation",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "false",
+        "isComputed": "true",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 21,
+        "valueKind": "InitCall",
+        "value": {
+          "type": "AppIntents.DisplayRepresentation",
+          "arguments": [
+            {
+              "label": "title",
+              "type": "Foundation.LocalizedStringResource",
+              "valueKind": "InterpolatedStringLiteral",
+              "value": {
+                "segments": [
+                  {
+                    "valueKind": "RawLiteral",
+                    "value": ""
+                  },
+                  {
+                    "valueKind": "Runtime"
+                  },
+                  {
+                    "valueKind": "RawLiteral",
+                    "value": ""
+                  }
+                ]
+              }
+            },
+            {
+              "label": "subtitle",
+              "type": "Swift.Optional<Foundation.LocalizedStringResource>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            },
+            {
+              "label": "image",
+              "type": "Swift.Optional<AppIntents.DisplayRepresentation.Image>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "typeName": "BoxScoreWidgetExtensionExtension.TeamQuery",
+    "mangledTypeName": "023BoxScoreWidgetExtensionD09TeamQueryV",
+    "kind": "struct",
+    "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+    "line": 26,
+    "conformances": [
+      "AppIntents.EntityQuery",
+      "AppIntents.DynamicOptionsProvider",
+      "AppIntents.PersistentlyIdentifiable",
+      "Swift.Sendable",
+      "AppIntents._SupportsAppDependencies",
+      "Swift.SendableMetatype",
+      "Swift.BitwiseCopyable"
+    ],
+    "allConformances": [
+      {
+        "protocolName": "AppIntents.EntityQuery",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents.DynamicOptionsProvider",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents.PersistentlyIdentifiable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "Swift.Sendable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents._SupportsAppDependencies",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "Swift.SendableMetatype",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "Swift.BitwiseCopyable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      }
+    ],
+    "associatedTypeAliases": [
+      {
+        "typeAliasName": "Entity",
+        "substitutedTypeName": "BoxScoreWidgetExtensionExtension.TeamEntity",
+        "substitutedMangledTypeName": "023BoxScoreWidgetExtensionD010TeamEntityV"
+      },
+      {
+        "typeAliasName": "Result",
+        "substitutedTypeName": "Swift.Array<BoxScoreWidgetExtensionExtension.TeamEntity>",
+        "substitutedMangledTypeName": "Say023BoxScoreWidgetExtensionD010TeamEntityVG"
+      },
+      {
+        "typeAliasName": "Result",
+        "substitutedTypeName": "Swift.Array<BoxScoreWidgetExtensionExtension.TeamEntity>",
+        "substitutedMangledTypeName": "Say023BoxScoreWidgetExtensionD010TeamEntityVG"
+      },
+      {
+        "typeAliasName": "DefaultValue",
+        "substitutedTypeName": "BoxScoreWidgetExtensionExtension.TeamEntity",
+        "substitutedMangledTypeName": "023BoxScoreWidgetExtensionD010TeamEntityV"
+      }
+    ],
+    "properties": []
+  },
+  {
+    "typeName": "BoxScoreWidgetExtensionExtension.ConfigureTeamIntent",
+    "mangledTypeName": "023BoxScoreWidgetExtensionD019ConfigureTeamIntentV",
+    "kind": "struct",
+    "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+    "line": 71,
+    "conformances": [
+      "AppIntents.WidgetConfigurationIntent",
+      "AppIntents.AppIntent",
+      "AppIntents.PersistentlyIdentifiable",
+      "AppIntents._SupportsAppDependencies",
+      "Swift.Sendable",
+      "Swift.SendableMetatype"
+    ],
+    "allConformances": [
+      {
+        "protocolName": "AppIntents.WidgetConfigurationIntent",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents.AppIntent",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents.PersistentlyIdentifiable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents._SupportsAppDependencies",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "Swift.Sendable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "Swift.SendableMetatype",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      }
+    ],
+    "associatedTypeAliases": [
+      {
+        "typeAliasName": "NeverResult",
+        "substitutedTypeName": "Swift.Never",
+        "substitutedMangledTypeName": "s5NeverO"
+      },
+      {
+        "typeAliasName": "PerformResult",
+        "substitutedTypeName": "Swift.Never",
+        "substitutedMangledTypeName": "s5NeverO"
+      },
+      {
+        "typeAliasName": "SummaryContent",
+        "substitutedTypeName": "some AppIntents.ParameterSummary",
+        "substitutedMangledTypeName": "10AppIntents0A6IntentPAAE16parameterSummaryQrvpZQOy023BoxScoreWidgetExtensionI0013ConfigureTeamC0V_Qo_",
+        "opaqueTypeProtocolRequirements": [
+          "AppIntents.ParameterSummary"
+        ],
+        "opaqueTypeSameTypeRequirements": []
+      }
+    ],
+    "properties": [
+      {
+        "label": "_team",
+        "type": "AppIntents.IntentParameter<Swift.Optional<BoxScoreWidgetExtensionExtension.TeamEntity>>",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "false",
+        "isComputed": "false",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 76,
+        "valueKind": "InitCall",
+        "value": {
+          "type": "AppIntents.IntentParameter<Swift.Optional<BoxScoreWidgetExtensionExtension.TeamEntity>>",
+          "arguments": [
+            {
+              "label": "title",
+              "type": "Foundation.LocalizedStringResource",
+              "valueKind": "RawLiteral",
+              "value": "Team"
+            },
+            {
+              "label": "description",
+              "type": "Swift.Optional<Foundation.LocalizedStringResource>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            },
+            {
+              "label": "default",
+              "type": "Swift.Optional<BoxScoreWidgetExtensionExtension.TeamEntity>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            },
+            {
+              "label": "requestValueDialog",
+              "type": "Swift.Optional<AppIntents.IntentDialog>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            },
+            {
+              "label": "requestDisambiguationDialog",
+              "type": "Swift.Optional<AppIntents.IntentDialog>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            },
+            {
+              "label": "inputConnectionBehavior",
+              "type": "AppIntents.InputConnectionBehavior",
+              "valueKind": "Runtime"
+            }
+          ]
+        }
+      },
+      {
+        "label": "title",
+        "type": "Foundation.LocalizedStringResource",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "true",
+        "isComputed": "false",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 72,
+        "valueKind": "RawLiteral",
+        "value": "Select Team"
+      },
+      {
+        "label": "description",
+        "type": "AppIntents.IntentDescription",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "true",
+        "isComputed": "false",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 73,
+        "valueKind": "RawLiteral",
+        "value": "Choose an NBA team"
+      },
+      {
+        "label": "team",
+        "type": "Swift.Optional<BoxScoreWidgetExtensionExtension.TeamEntity>",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "false",
+        "isComputed": "true",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 76,
+        "valueKind": "InitCall",
+        "value": {
+          "type": "AppIntents.IntentParameter<Swift.Optional<BoxScoreWidgetExtensionExtension.TeamEntity>>",
+          "arguments": [
+            {
+              "label": "title",
+              "type": "Foundation.LocalizedStringResource",
+              "valueKind": "RawLiteral",
+              "value": "Team"
+            },
+            {
+              "label": "description",
+              "type": "Swift.Optional<Foundation.LocalizedStringResource>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            },
+            {
+              "label": "default",
+              "type": "Swift.Optional<BoxScoreWidgetExtensionExtension.TeamEntity>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            },
+            {
+              "label": "requestValueDialog",
+              "type": "Swift.Optional<AppIntents.IntentDialog>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            },
+            {
+              "label": "requestDisambiguationDialog",
+              "type": "Swift.Optional<AppIntents.IntentDialog>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            },
+            {
+              "label": "inputConnectionBehavior",
+              "type": "AppIntents.InputConnectionBehavior",
+              "valueKind": "Runtime"
+            }
+          ]
+        },
+        "propertyWrappers": [
+          {
+            "type": "AppIntents.IntentParameter",
+            "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+            "line": 75,
+            "arguments": [
+              {
+                "label": "title",
+                "type": "Foundation.LocalizedStringResource",
+                "valueKind": "RawLiteral",
+                "value": "Team"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "$team",
+        "type": "AppIntents.IntentParameter<Swift.Optional<BoxScoreWidgetExtensionExtension.TeamEntity>>",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "false",
+        "isComputed": "true",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 76,
+        "valueKind": "Runtime"
+      }
+    ]
+  },
+  {
+    "typeName": "BoxScoreWidgetExtensionExtension.PlayerEntity",
+    "mangledTypeName": "023BoxScoreWidgetExtensionD012PlayerEntityV",
+    "kind": "struct",
+    "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+    "line": 89,
+    "conformances": [
+      "AppIntents.AppEntity",
+      "AppIntents.AppValue",
+      "AppIntents.DisplayRepresentable",
+      "Swift.Identifiable",
+      "AppIntents.PersistentlyIdentifiable",
+      "AppIntents.TypeDisplayRepresentable",
+      "AppIntents._IntentValue",
+      "Swift.Sendable",
+      "AppIntents.InstanceDisplayRepresentable",
+      "Swift.SendableMetatype",
+      "Foundation.CustomLocalizedStringResourceConvertible"
+    ],
+    "allConformances": [
+      {
+        "protocolName": "AppIntents.AppEntity",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents.AppValue",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents.DisplayRepresentable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "Swift.Identifiable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents.PersistentlyIdentifiable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents.TypeDisplayRepresentable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents._IntentValue",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "Swift.Sendable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents.InstanceDisplayRepresentable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "Swift.SendableMetatype",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "Foundation.CustomLocalizedStringResourceConvertible",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      }
+    ],
+    "associatedTypeAliases": [
+      {
+        "typeAliasName": "DefaultQuery",
+        "substitutedTypeName": "BoxScoreWidgetExtensionExtension.PlayerQuery",
+        "substitutedMangledTypeName": "023BoxScoreWidgetExtensionD011PlayerQueryV"
+      },
+      {
+        "typeAliasName": "ID",
+        "substitutedTypeName": "Swift.Int",
+        "substitutedMangledTypeName": "Si"
+      },
+      {
+        "typeAliasName": "ValueType",
+        "substitutedTypeName": "BoxScoreWidgetExtensionExtension.PlayerEntity",
+        "substitutedMangledTypeName": "023BoxScoreWidgetExtensionD012PlayerEntityV"
+      },
+      {
+        "typeAliasName": "UnwrappedType",
+        "substitutedTypeName": "BoxScoreWidgetExtensionExtension.PlayerEntity",
+        "substitutedMangledTypeName": "023BoxScoreWidgetExtensionD012PlayerEntityV"
+      },
+      {
+        "typeAliasName": "Specification",
+        "substitutedTypeName": "AppIntents.EmptyResolverSpecification<BoxScoreWidgetExtensionExtension.PlayerEntity>",
+        "substitutedMangledTypeName": "10AppIntents26EmptyResolverSpecificationVy023BoxScoreWidgetExtensionI012PlayerEntityVG"
+      }
+    ],
+    "properties": [
+      {
+        "label": "id",
+        "type": "Swift.Int",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "false",
+        "isComputed": "false",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 90,
+        "valueKind": "Runtime"
+      },
+      {
+        "label": "name",
+        "type": "Swift.String",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "false",
+        "isComputed": "false",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 91,
+        "valueKind": "Runtime"
+      },
+      {
+        "label": "team",
+        "type": "Swift.String",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "false",
+        "isComputed": "false",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 92,
+        "valueKind": "Runtime"
+      },
+      {
+        "label": "displayString",
+        "type": "Swift.String",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "false",
+        "isComputed": "true",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 94,
+        "valueKind": "InterpolatedStringLiteral",
+        "value": {
+          "segments": [
+            {
+              "valueKind": "RawLiteral",
+              "value": ""
+            },
+            {
+              "valueKind": "Runtime"
+            },
+            {
+              "valueKind": "RawLiteral",
+              "value": " ("
+            },
+            {
+              "valueKind": "Runtime"
+            },
+            {
+              "valueKind": "RawLiteral",
+              "value": ")"
+            }
+          ]
+        }
+      },
+      {
+        "label": "typeDisplayRepresentation",
+        "type": "AppIntents.TypeDisplayRepresentation",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "true",
+        "isComputed": "false",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 98,
+        "valueKind": "RawLiteral",
+        "value": "NBA Player"
+      },
+      {
+        "label": "defaultQuery",
+        "type": "BoxScoreWidgetExtensionExtension.PlayerQuery",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "true",
+        "isComputed": "false",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 99,
+        "valueKind": "InitCall",
+        "value": {
+          "type": "BoxScoreWidgetExtensionExtension.PlayerQuery",
+          "arguments": []
+        }
+      },
+      {
+        "label": "displayRepresentation",
+        "type": "AppIntents.DisplayRepresentation",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "false",
+        "isComputed": "true",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 101,
+        "valueKind": "InitCall",
+        "value": {
+          "type": "AppIntents.DisplayRepresentation",
+          "arguments": [
+            {
+              "label": "title",
+              "type": "Foundation.LocalizedStringResource",
+              "valueKind": "InterpolatedStringLiteral",
+              "value": {
+                "segments": [
+                  {
+                    "valueKind": "RawLiteral",
+                    "value": ""
+                  },
+                  {
+                    "valueKind": "Runtime"
+                  },
+                  {
+                    "valueKind": "RawLiteral",
+                    "value": ""
+                  }
+                ]
+              }
+            },
+            {
+              "label": "subtitle",
+              "type": "Swift.Optional<Foundation.LocalizedStringResource>",
+              "valueKind": "InterpolatedStringLiteral",
+              "value": {
+                "segments": [
+                  {
+                    "valueKind": "RawLiteral",
+                    "value": ""
+                  },
+                  {
+                    "valueKind": "Runtime"
+                  },
+                  {
+                    "valueKind": "RawLiteral",
+                    "value": ""
+                  }
+                ]
+              }
+            },
+            {
+              "label": "image",
+              "type": "Swift.Optional<AppIntents.DisplayRepresentation.Image>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "typeName": "BoxScoreWidgetExtensionExtension.PlayerQuery",
+    "mangledTypeName": "023BoxScoreWidgetExtensionD011PlayerQueryV",
+    "kind": "struct",
+    "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+    "line": 106,
+    "conformances": [
+      "AppIntents.EntityQuery",
+      "AppIntents.DynamicOptionsProvider",
+      "AppIntents.PersistentlyIdentifiable",
+      "Swift.Sendable",
+      "AppIntents._SupportsAppDependencies",
+      "Swift.SendableMetatype",
+      "Swift.BitwiseCopyable"
+    ],
+    "allConformances": [
+      {
+        "protocolName": "AppIntents.EntityQuery",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents.DynamicOptionsProvider",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents.PersistentlyIdentifiable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "Swift.Sendable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents._SupportsAppDependencies",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "Swift.SendableMetatype",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "Swift.BitwiseCopyable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      }
+    ],
+    "associatedTypeAliases": [
+      {
+        "typeAliasName": "Entity",
+        "substitutedTypeName": "BoxScoreWidgetExtensionExtension.PlayerEntity",
+        "substitutedMangledTypeName": "023BoxScoreWidgetExtensionD012PlayerEntityV"
+      },
+      {
+        "typeAliasName": "Result",
+        "substitutedTypeName": "Swift.Array<BoxScoreWidgetExtensionExtension.PlayerEntity>",
+        "substitutedMangledTypeName": "Say023BoxScoreWidgetExtensionD012PlayerEntityVG"
+      },
+      {
+        "typeAliasName": "Result",
+        "substitutedTypeName": "Swift.Array<BoxScoreWidgetExtensionExtension.PlayerEntity>",
+        "substitutedMangledTypeName": "Say023BoxScoreWidgetExtensionD012PlayerEntityVG"
+      },
+      {
+        "typeAliasName": "DefaultValue",
+        "substitutedTypeName": "BoxScoreWidgetExtensionExtension.PlayerEntity",
+        "substitutedMangledTypeName": "023BoxScoreWidgetExtensionD012PlayerEntityV"
+      }
+    ],
+    "properties": []
+  },
+  {
+    "typeName": "BoxScoreWidgetExtensionExtension.ConfigurePlayerIntent",
+    "mangledTypeName": "023BoxScoreWidgetExtensionD021ConfigurePlayerIntentV",
+    "kind": "struct",
+    "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+    "line": 145,
+    "conformances": [
+      "AppIntents.WidgetConfigurationIntent",
+      "AppIntents.AppIntent",
+      "AppIntents.PersistentlyIdentifiable",
+      "AppIntents._SupportsAppDependencies",
+      "Swift.Sendable",
+      "Swift.SendableMetatype"
+    ],
+    "allConformances": [
+      {
+        "protocolName": "AppIntents.WidgetConfigurationIntent",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents.AppIntent",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents.PersistentlyIdentifiable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "AppIntents._SupportsAppDependencies",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "Swift.Sendable",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      },
+      {
+        "protocolName": "Swift.SendableMetatype",
+        "conformanceDefiningModule": "BoxScoreWidgetExtensionExtension"
+      }
+    ],
+    "associatedTypeAliases": [
+      {
+        "typeAliasName": "NeverResult",
+        "substitutedTypeName": "Swift.Never",
+        "substitutedMangledTypeName": "s5NeverO"
+      },
+      {
+        "typeAliasName": "PerformResult",
+        "substitutedTypeName": "Swift.Never",
+        "substitutedMangledTypeName": "s5NeverO"
+      },
+      {
+        "typeAliasName": "SummaryContent",
+        "substitutedTypeName": "some AppIntents.ParameterSummary",
+        "substitutedMangledTypeName": "10AppIntents0A6IntentPAAE16parameterSummaryQrvpZQOy023BoxScoreWidgetExtensionI0015ConfigurePlayerC0V_Qo_",
+        "opaqueTypeProtocolRequirements": [
+          "AppIntents.ParameterSummary"
+        ],
+        "opaqueTypeSameTypeRequirements": []
+      }
+    ],
+    "properties": [
+      {
+        "label": "_player",
+        "type": "AppIntents.IntentParameter<Swift.Optional<BoxScoreWidgetExtensionExtension.PlayerEntity>>",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "false",
+        "isComputed": "false",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 150,
+        "valueKind": "InitCall",
+        "value": {
+          "type": "AppIntents.IntentParameter<Swift.Optional<BoxScoreWidgetExtensionExtension.PlayerEntity>>",
+          "arguments": [
+            {
+              "label": "title",
+              "type": "Foundation.LocalizedStringResource",
+              "valueKind": "RawLiteral",
+              "value": "Player"
+            },
+            {
+              "label": "description",
+              "type": "Swift.Optional<Foundation.LocalizedStringResource>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            },
+            {
+              "label": "default",
+              "type": "Swift.Optional<BoxScoreWidgetExtensionExtension.PlayerEntity>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            },
+            {
+              "label": "requestValueDialog",
+              "type": "Swift.Optional<AppIntents.IntentDialog>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            },
+            {
+              "label": "requestDisambiguationDialog",
+              "type": "Swift.Optional<AppIntents.IntentDialog>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            },
+            {
+              "label": "inputConnectionBehavior",
+              "type": "AppIntents.InputConnectionBehavior",
+              "valueKind": "Runtime"
+            }
+          ]
+        }
+      },
+      {
+        "label": "title",
+        "type": "Foundation.LocalizedStringResource",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "true",
+        "isComputed": "false",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 146,
+        "valueKind": "RawLiteral",
+        "value": "Select Player"
+      },
+      {
+        "label": "description",
+        "type": "AppIntents.IntentDescription",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "true",
+        "isComputed": "false",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 147,
+        "valueKind": "RawLiteral",
+        "value": "Choose an NBA player"
+      },
+      {
+        "label": "player",
+        "type": "Swift.Optional<BoxScoreWidgetExtensionExtension.PlayerEntity>",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "false",
+        "isComputed": "true",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 150,
+        "valueKind": "InitCall",
+        "value": {
+          "type": "AppIntents.IntentParameter<Swift.Optional<BoxScoreWidgetExtensionExtension.PlayerEntity>>",
+          "arguments": [
+            {
+              "label": "title",
+              "type": "Foundation.LocalizedStringResource",
+              "valueKind": "RawLiteral",
+              "value": "Player"
+            },
+            {
+              "label": "description",
+              "type": "Swift.Optional<Foundation.LocalizedStringResource>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            },
+            {
+              "label": "default",
+              "type": "Swift.Optional<BoxScoreWidgetExtensionExtension.PlayerEntity>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            },
+            {
+              "label": "requestValueDialog",
+              "type": "Swift.Optional<AppIntents.IntentDialog>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            },
+            {
+              "label": "requestDisambiguationDialog",
+              "type": "Swift.Optional<AppIntents.IntentDialog>",
+              "valueKind": "RawLiteral",
+              "value": "nil"
+            },
+            {
+              "label": "inputConnectionBehavior",
+              "type": "AppIntents.InputConnectionBehavior",
+              "valueKind": "Runtime"
+            }
+          ]
+        },
+        "propertyWrappers": [
+          {
+            "type": "AppIntents.IntentParameter",
+            "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+            "line": 149,
+            "arguments": [
+              {
+                "label": "title",
+                "type": "Foundation.LocalizedStringResource",
+                "valueKind": "RawLiteral",
+                "value": "Player"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "$player",
+        "type": "AppIntents.IntentParameter<Swift.Optional<BoxScoreWidgetExtensionExtension.PlayerEntity>>",
+        "mangledTypeName": "n/a - deprecated",
+        "isStatic": "false",
+        "isComputed": "true",
+        "file": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+        "line": 150,
+        "valueKind": "Runtime"
+      }
+    ]
+  }
+]

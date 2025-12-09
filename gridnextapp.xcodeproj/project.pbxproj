@@ -135,22 +135,10 @@
 			);
 			target = 446CC7A02EE6DF12007C2F07 /* BoxScoreWidgetExtensionExtension */;
 		};
-		446CC7B92EE6DF2E007C2F07 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				CountdownWidget.swift,
-				LastGamesWidget.swift,
-				NextGamesWidget.swift,
-				PlayerLastGameWidget.swift,
-				SeasonAverageWidget.swift,
-				TeamStandingWidget.swift,
-			);
-			target = D0F5776F2DDF5334005F1BF4 /* boxscorewidget */;
-		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		446CC7A42EE6DF12007C2F07 /* BoxScoreWidgetExtension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (446CC7B92EE6DF2E007C2F07 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, 446CC7B72EE6DF13007C2F07 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = BoxScoreWidgetExtension; sourceTree = "<group>"; };
+		446CC7A42EE6DF12007C2F07 /* BoxScoreWidgetExtension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (446CC7B72EE6DF13007C2F07 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = BoxScoreWidgetExtension; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */

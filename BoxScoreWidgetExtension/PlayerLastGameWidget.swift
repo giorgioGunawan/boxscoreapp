@@ -7,10 +7,10 @@
 
 import WidgetKit
 import SwiftUI
+import AppIntents
 
-struct PlayerLastGameProvider: TimelineProvider {
-    let nbaPlayerID: Int
-    
+@available(iOS 17.0, *)
+struct PlayerLastGameProvider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> PlayerLastGameEntry {
         PlayerLastGameEntry(
             date: Date(),
@@ -20,29 +20,24 @@ struct PlayerLastGameProvider: TimelineProvider {
         )
     }
     
-    func getSnapshot(in context: Context, completion: @escaping (PlayerLastGameEntry) -> Void) {
+    func snapshot(for configuration: ConfigurePlayerIntent, in context: Context) async -> PlayerLastGameEntry {
         if context.isPreview {
-            completion(placeholder(in: context))
-            return
+            return placeholder(in: context)
         }
-        
-        Task {
-            let entry = await loadData()
-            completion(entry)
-        }
+        return await loadData(for: configuration)
     }
     
-    func getTimeline(in context: Context, completion: @escaping (Timeline<PlayerLastGameEntry>) -> Void) {
-        Task {
-            let entry = await loadData()
-            let nextUpdate = Calendar.current.date(byAdding: .hour, value: 1, to: Date()) ?? Date()
-            let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
-            completion(timeline)
-        }
+    func timeline(for configuration: ConfigurePlayerIntent, in context: Context) async -> Timeline<PlayerLastGameEntry> {
+        let entry = await loadData(for: configuration)
+        let nextUpdate = Calendar.current.date(byAdding: .hour, value: 1, to: Date()) ?? Date()
+        return Timeline(entries: [entry], policy: .after(nextUpdate))
     }
     
-    private func loadData() async -> PlayerLastGameEntry {
-        do {
+    private func loadData(for configuration: ConfigurePlayerIntent) async -> PlayerLastGameEntry {
+        guard let nbaPlayerID = configuration.player?.id else {
+            return PlayerLastGameEntry(date: Date(), game: nil, error: "No player selected", isPreview: false)
+        }
+        do{
             let game = try await NBAAPIService.shared.getPlayerLatestGame(nbaPlayerID: nbaPlayerID)
             return PlayerLastGameEntry(
                 date: Date(),
@@ -206,11 +201,12 @@ struct MediumPlayerLastGameView: View {
     }
 }
 
+@available(iOS 17.0, *)
 struct PlayerLastGameWidget: Widget {
     let kind: String = "PlayerLastGameWidget"
     
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: PlayerLastGameProvider(nbaPlayerID: 201939)) { entry in
+        AppIntentConfiguration(kind: kind, intent: ConfigurePlayerIntent.self, provider: PlayerLastGameProvider()) { entry in
             if #available(iOS 17.0, *) {
                 PlayerLastGameWidgetEntryView(entry: entry)
                     .containerBackground(Color.black, for: .widget)

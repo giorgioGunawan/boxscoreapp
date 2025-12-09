@@ -7,10 +7,10 @@
 
 import WidgetKit
 import SwiftUI
+import AppIntents
 
-struct SeasonAverageProvider: TimelineProvider {
-    let nbaPlayerID: Int
-    
+@available(iOS 17.0, *)
+struct SeasonAverageProvider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> SeasonAverageEntry {
         SeasonAverageEntry(
             date: Date(),
@@ -20,28 +20,23 @@ struct SeasonAverageProvider: TimelineProvider {
         )
     }
     
-    func getSnapshot(in context: Context, completion: @escaping (SeasonAverageEntry) -> Void) {
+    func snapshot(for configuration: ConfigurePlayerIntent, in context: Context) async -> SeasonAverageEntry {
         if context.isPreview {
-            completion(placeholder(in: context))
-            return
+            return placeholder(in: context)
         }
-        
-        Task {
-            let entry = await loadData()
-            completion(entry)
-        }
+        return await loadData(for: configuration)
     }
     
-    func getTimeline(in context: Context, completion: @escaping (Timeline<SeasonAverageEntry>) -> Void) {
-        Task {
-            let entry = await loadData()
-            let nextUpdate = Calendar.current.date(byAdding: .hour, value: 6, to: Date()) ?? Date()
-            let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
-            completion(timeline)
-        }
+    func timeline(for configuration: ConfigurePlayerIntent, in context: Context) async -> Timeline<SeasonAverageEntry> {
+        let entry = await loadData(for: configuration)
+        let nextUpdate = Calendar.current.date(byAdding: .hour, value: 6, to: Date()) ?? Date()
+        return Timeline(entries: [entry], policy: .after(nextUpdate))
     }
     
-    private func loadData() async -> SeasonAverageEntry {
+    private func loadData(for configuration: ConfigurePlayerIntent) async -> SeasonAverageEntry {
+        guard let nbaPlayerID = configuration.player?.id else {
+            return SeasonAverageEntry(date: Date(), averages: nil, error: "No player selected", isPreview: false)
+        }
         do {
             let averages = try await NBAAPIService.shared.getSeasonAverages(nbaPlayerID: nbaPlayerID)
             return SeasonAverageEntry(
@@ -215,11 +210,12 @@ struct StatRow: View {
     }
 }
 
+@available(iOS 17.0, *)
 struct SeasonAverageWidget: Widget {
     let kind: String = "SeasonAverageWidget"
     
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: SeasonAverageProvider(nbaPlayerID: 201939)) { entry in
+        AppIntentConfiguration(kind: kind, intent: ConfigurePlayerIntent.self, provider: SeasonAverageProvider()) { entry in
             if #available(iOS 17.0, *) {
                 SeasonAverageWidgetEntryView(entry: entry)
                     .containerBackground(Color.black, for: .widget)

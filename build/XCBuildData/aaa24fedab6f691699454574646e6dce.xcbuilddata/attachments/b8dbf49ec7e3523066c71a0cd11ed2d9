@@ -1,0 +1,61 @@
+{
+  "" : {
+    "const-values" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/BoxScoreWidgetExtensionExtension-primary.swiftconstvalues",
+    "dependencies" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/BoxScoreWidgetExtensionExtension-primary.d",
+    "diagnostics" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/BoxScoreWidgetExtensionExtension-primary.dia",
+    "emit-module-dependencies" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/BoxScoreWidgetExtensionExtension-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/BoxScoreWidgetExtensionExtension-primary-emit-module.dia",
+    "pch" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/BoxScoreWidgetExtensionExtension-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/BoxScoreWidgetExtensionExtension-primary.swiftdeps"
+  },
+  "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift" : {
+    "index-unit-output-path" : "/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/BoxScoreWidgetExtensionBundle.o",
+    "llvm-bc" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/BoxScoreWidgetExtensionBundle.bc",
+    "object" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/BoxScoreWidgetExtensionBundle.o"
+  },
+  "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/CountdownWidget.swift" : {
+    "index-unit-output-path" : "/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/CountdownWidget.o",
+    "llvm-bc" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/CountdownWidget.bc",
+    "object" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/CountdownWidget.o"
+  },
+  "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/LastGamesWidget.swift" : {
+    "index-unit-output-path" : "/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/LastGamesWidget.o",
+    "llvm-bc" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/LastGamesWidget.bc",
+    "object" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/LastGamesWidget.o"
+  },
+  "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/NBAAPIService.swift" : {
+    "index-unit-output-path" : "/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/NBAAPIService.o",
+    "llvm-bc" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/NBAAPIService.bc",
+    "object" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/NBAAPIService.o"
+  },
+  "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/NBAModels.swift" : {
+    "index-unit-output-path" : "/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/NBAModels.o",
+    "llvm-bc" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/NBAModels.bc",
+    "object" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/NBAModels.o"
+  },
+  "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/NextGamesWidget.swift" : {
+    "index-unit-output-path" : "/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/NextGamesWidget.o",
+    "llvm-bc" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/NextGamesWidget.bc",
+    "object" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/NextGamesWidget.o"
+  },
+  "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/PlayerLastGameWidget.swift" : {
+    "index-unit-output-path" : "/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/PlayerLastGameWidget.o",
+    "llvm-bc" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/PlayerLastGameWidget.bc",
+    "object" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/PlayerLastGameWidget.o"
+  },
+  "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/SeasonAverageWidget.swift" : {
+    "index-unit-output-path" : "/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/SeasonAverageWidget.o",
+    "llvm-bc" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/SeasonAverageWidget.bc",
+    "object" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/SeasonAverageWidget.o"
+  },
+  "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/TeamStandingWidget.swift" : {
+    "index-unit-output-path" : "/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/TeamStandingWidget.o",
+    "llvm-bc" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/TeamStandingWidget.bc",
+    "object" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/TeamStandingWidget.o"
+  },
+  "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "index-unit-output-path" : "/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/GeneratedAssetSymbols.o"
+  }
+}

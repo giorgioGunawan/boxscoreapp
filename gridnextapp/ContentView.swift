@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct ContentView: View {
     @StateObject private var subscriptionManager = SubscriptionManager.shared
@@ -171,6 +172,24 @@ struct WidgetGalleryView: View {
                     .padding(.horizontal)
                     .padding(.top, 20)
                     .shadow(color: .black.opacity(0.5), radius: 3, x: 0, y: 2)
+                
+                // Configure Widgets Button
+                NavigationLink(destination: WidgetConfigView()) {
+                    HStack {
+                        Image(systemName: "slider.horizontal.3")
+                        Text("Configure Widgets")
+                            .fontWeight(.semibold)
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                    }
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color.orange.opacity(0.8))
+                    )
+                }
+                .padding(.horizontal)
                 
                 // Quick How-To Access
                 VStack(spacing: 12) {
@@ -1413,6 +1432,244 @@ struct ConfettiParticle {
     let size: Double
     let color: Color
     var opacity: Double
+}
+
+// MARK: - Widget Configuration View
+
+struct WidgetConfigView: View {
+    @State private var selectedTeam: String = ""
+    @State private var selectedPlayerID: Int = 0
+    @State private var selectedPlayerName: String = ""
+    @State private var players: [PlayerInfoModel] = []
+    @State private var searchText: String = ""
+    @State private var showingPlayerPicker = false
+    
+    private let appGroupID = "group.com.giorgiogunawan.boxscore"
+    
+    private var userDefaults: UserDefaults? {
+        UserDefaults(suiteName: appGroupID)
+    }
+    
+    let teams: [(abbr: String, name: String)] = [
+        ("ATL", "Atlanta Hawks"),
+        ("BOS", "Boston Celtics"),
+        ("BKN", "Brooklyn Nets"),
+        ("CHA", "Charlotte Hornets"),
+        ("CHI", "Chicago Bulls"),
+        ("CLE", "Cleveland Cavaliers"),
+        ("DAL", "Dallas Mavericks"),
+        ("DEN", "Denver Nuggets"),
+        ("DET", "Detroit Pistons"),
+        ("GSW", "Golden State Warriors"),
+        ("HOU", "Houston Rockets"),
+        ("IND", "Indiana Pacers"),
+        ("LAC", "LA Clippers"),
+        ("LAL", "Los Angeles Lakers"),
+        ("MEM", "Memphis Grizzlies"),
+        ("MIA", "Miami Heat"),
+        ("MIL", "Milwaukee Bucks"),
+        ("MIN", "Minnesota Timberwolves"),
+        ("NOP", "New Orleans Pelicans"),
+        ("NYK", "New York Knicks"),
+        ("OKC", "Oklahoma City Thunder"),
+        ("ORL", "Orlando Magic"),
+        ("PHI", "Philadelphia 76ers"),
+        ("PHX", "Phoenix Suns"),
+        ("POR", "Portland Trail Blazers"),
+        ("SAC", "Sacramento Kings"),
+        ("SAS", "San Antonio Spurs"),
+        ("TOR", "Toronto Raptors"),
+        ("UTA", "Utah Jazz"),
+        ("WAS", "Washington Wizards")
+    ]
+    
+    var filteredPlayers: [PlayerInfoModel] {
+        if searchText.isEmpty {
+            return players
+        }
+        return players.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+    }
+    
+    var body: some View {
+        Form {
+            Section {
+                Picker("Favorite Team", selection: $selectedTeam) {
+                    ForEach(teams, id: \.abbr) { team in
+                        Text(team.name).tag(team.abbr)
+                    }
+                }
+                .onChange(of: selectedTeam) { _, newValue in
+                    saveTeam(newValue)
+                }
+            } header: {
+                Text("Team Widgets")
+            } footer: {
+                Text("Used for Next Games, Last Results, Standing, and Countdown widgets.")
+            }
+            
+            Section {
+                Button {
+                    showingPlayerPicker = true
+                } label: {
+                    HStack {
+                        Text("Favorite Player")
+                            .foregroundColor(.primary)
+                        Spacer()
+                        Text(selectedPlayerName.isEmpty ? "Select Player" : selectedPlayerName)
+                            .foregroundColor(.secondary)
+                    }
+                }
+            } header: {
+                Text("Player Widgets")
+            } footer: {
+                Text("Used for Season Average and Last Game widgets.")
+            }
+            
+            Section {
+                HStack {
+                    Text("Team")
+                    Spacer()
+                    Text(teams.first { $0.abbr == selectedTeam }?.name ?? selectedTeam)
+                        .foregroundColor(.secondary)
+                }
+                HStack {
+                    Text("Player")
+                    Spacer()
+                    Text(selectedPlayerName.isEmpty ? "Not set" : selectedPlayerName)
+                        .foregroundColor(.secondary)
+                }
+            } header: {
+                Text("Current Settings")
+            }
+            
+            Section {
+                Button {
+                    WidgetCenter.shared.reloadAllTimelines()
+                } label: {
+                    HStack {
+                        Spacer()
+                        Text("Refresh All Widgets")
+                        Spacer()
+                    }
+                }
+            }
+        }
+        .navigationTitle("Widget Settings")
+        .onAppear {
+            loadSettings()
+            loadPlayers()
+        }
+        .sheet(isPresented: $showingPlayerPicker) {
+            PlayerPickerSheet(
+                players: filteredPlayers,
+                searchText: $searchText,
+                selectedPlayerID: $selectedPlayerID,
+                onSelect: { player in
+                    savePlayer(id: player.nba_player_id, name: player.name)
+                    showingPlayerPicker = false
+                }
+            )
+        }
+    }
+    
+    private func loadSettings() {
+        selectedTeam = userDefaults?.string(forKey: "selectedTeam") ?? "GSW"
+        selectedPlayerID = userDefaults?.integer(forKey: "selectedPlayerID") ?? 201939
+        selectedPlayerName = userDefaults?.string(forKey: "selectedPlayerName") ?? "Stephen Curry"
+    }
+    
+    private func saveTeam(_ abbr: String) {
+        userDefaults?.set(abbr, forKey: "selectedTeam")
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    private func savePlayer(id: Int, name: String) {
+        userDefaults?.set(id, forKey: "selectedPlayerID")
+        userDefaults?.set(name, forKey: "selectedPlayerName")
+        selectedPlayerID = id
+        selectedPlayerName = name
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+    
+    private func loadPlayers() {
+        guard let url = Bundle.main.url(forResource: "players_db", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let database = try? JSONDecoder().decode(PlayerDatabaseModel.self, from: data) else {
+            return
+        }
+        players = database.players.sorted { $0.name < $1.name }
+    }
+}
+
+struct PlayerPickerSheet: View {
+    let players: [PlayerInfoModel]
+    @Binding var searchText: String
+    @Binding var selectedPlayerID: Int
+    let onSelect: (PlayerInfoModel) -> Void
+    
+    @Environment(\.dismiss) private var dismiss
+    
+    var body: some View {
+        NavigationStack {
+            List {
+                ForEach(players) { player in
+                    Button {
+                        onSelect(player)
+                    } label: {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(player.name)
+                                    .foregroundColor(.primary)
+                                Text("\(player.team) • #\(player.number) • \(player.position)")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                            Spacer()
+                            if player.nba_player_id == selectedPlayerID {
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.blue)
+                            }
+                        }
+                    }
+                }
+            }
+            .searchable(text: $searchText, prompt: "Search players")
+            .navigationTitle("Select Player")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel") {
+                        dismiss()
+                    }
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Player Database Models
+
+struct PlayerDatabaseModel: Codable {
+    let season: String
+    let generated_at: String
+    let total_players: Int
+    let players: [PlayerInfoModel]
+}
+
+struct PlayerInfoModel: Codable, Identifiable {
+    let nba_player_id: Int
+    let name: String
+    let team: String
+    let team_name: String
+    let number: String
+    let position: String
+    let height: String?
+    let weight: String?
+    let age: Int?
+    let years_pro: Int?
+    let college: String?
+    
+    var id: Int { nba_player_id }
 }
 
 #Preview {

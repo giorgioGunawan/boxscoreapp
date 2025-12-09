@@ -1,0 +1,12 @@
+{
+  "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift" : {
+    "abi-baseline-json" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/BoxScoreWidgetExtensionExtension.abi.json",
+    "const-values" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/BoxScoreWidgetExtensionExtension-primary.swiftconstvalues",
+    "dependencies" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/BoxScoreWidgetExtensionExtension-primary.d",
+    "diagnostics" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/BoxScoreWidgetExtensionExtension-primary.dia",
+    "objc-header" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/BoxScoreWidgetExtensionExtension-Swift.h",
+    "swiftdoc" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/BoxScoreWidgetExtensionExtension.swiftdoc",
+    "swiftmodule" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/BoxScoreWidgetExtensionExtension.swiftmodule",
+    "swiftsourceinfo" : "/Users/giorgio/personal/boxscoreapp/build/gridnextapp.build/Release-iphoneos/BoxScoreWidgetExtensionExtension.build/Objects-normal/arm64/BoxScoreWidgetExtensionExtension.swiftsourceinfo"
+  }
+}

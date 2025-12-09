@@ -1,0 +1,80 @@
+{
+  "source": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/NextGamesWidget.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Next Games",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 101
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@ (%lld-%lld)",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 106
+        }
+      },
+      {
+        "comment": "",
+        "key": "Next 3 Games",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 147
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld-%lld",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 140
+        }
+      },
+      {
+        "comment": "",
+        "key": "vs",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 173
+        }
+      },
+      {
+        "comment": "",
+        "key": "@",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 173
+        }
+      },
+      {
+        "comment": "",
+        "key": "Error",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 216
+        }
+      },
+      {
+        "comment": "",
+        "key": "Next 3 Games",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 259
+        }
+      },
+      {
+        "comment": "",
+        "key": "Shows your team's next 3 upcoming games.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 260
+        }
+      }
+    ]
+  },
+  "version": 1
+}

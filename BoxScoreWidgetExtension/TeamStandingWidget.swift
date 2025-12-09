@@ -7,10 +7,10 @@
 
 import WidgetKit
 import SwiftUI
+import AppIntents
 
-struct TeamStandingProvider: TimelineProvider {
-    let teamID: Int
-    
+@available(iOS 17.0, *)
+struct TeamStandingProvider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> TeamStandingEntry {
         TeamStandingEntry(
             date: Date(),
@@ -20,29 +20,25 @@ struct TeamStandingProvider: TimelineProvider {
         )
     }
     
-    func getSnapshot(in context: Context, completion: @escaping (TeamStandingEntry) -> Void) {
+    func snapshot(for configuration: ConfigureTeamIntent, in context: Context) async -> TeamStandingEntry {
         if context.isPreview {
-            completion(placeholder(in: context))
-            return
+            return placeholder(in: context)
         }
-        
-        Task {
-            let entry = await loadData()
-            completion(entry)
-        }
+        return await loadData(for: configuration)
     }
     
-    func getTimeline(in context: Context, completion: @escaping (Timeline<TeamStandingEntry>) -> Void) {
-        Task {
-            let entry = await loadData()
-            let nextUpdate = Calendar.current.date(byAdding: .hour, value: 6, to: Date()) ?? Date()
-            let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
-            completion(timeline)
-        }
+    func timeline(for configuration: ConfigureTeamIntent, in context: Context) async -> Timeline<TeamStandingEntry> {
+        let entry = await loadData(for: configuration)
+        let nextUpdate = Calendar.current.date(byAdding: .hour, value: 6, to: Date()) ?? Date()
+        return Timeline(entries: [entry], policy: .after(nextUpdate))
     }
     
-    private func loadData() async -> TeamStandingEntry {
+    private func loadData(for configuration: ConfigureTeamIntent) async -> TeamStandingEntry {
+        guard let teamAbbr = configuration.team?.id else {
+            return TeamStandingEntry(date: Date(), standings: nil, error: "No team selected", isPreview: false)
+        }
         do {
+            let teamID = try await NBAAPIService.shared.getTeamID(for: teamAbbr)
             let standings = try await NBAAPIService.shared.getTeamStandings(teamID: teamID)
             return TeamStandingEntry(
                 date: Date(),
@@ -214,11 +210,12 @@ struct MediumTeamStandingView: View {
     }
 }
 
+@available(iOS 17.0, *)
 struct TeamStandingWidget: Widget {
     let kind: String = "TeamStandingWidget"
     
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: TeamStandingProvider(teamID: 2)) { entry in
+        AppIntentConfiguration(kind: kind, intent: ConfigureTeamIntent.self, provider: TeamStandingProvider()) { entry in
             if #available(iOS 17.0, *) {
                 TeamStandingWidgetEntryView(entry: entry)
                     .containerBackground(Color.black, for: .widget)

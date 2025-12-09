@@ -1,0 +1,64 @@
+{
+  "source": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/LastGamesWidget.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Last 3 Games",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 93
+        }
+      },
+      {
+        "comment": "",
+        "key": "Last 3 Games",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 116
+        }
+      },
+      {
+        "comment": "",
+        "key": "vs",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 150
+        }
+      },
+      {
+        "comment": "",
+        "key": "@",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 150
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld - %lld",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 165
+        }
+      },
+      {
+        "comment": "",
+        "key": "Last 3 Results",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 204
+        }
+      },
+      {
+        "comment": "",
+        "key": "Shows your team's last 3 game results.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 205
+        }
+      }
+    ]
+  },
+  "version": 1
+}

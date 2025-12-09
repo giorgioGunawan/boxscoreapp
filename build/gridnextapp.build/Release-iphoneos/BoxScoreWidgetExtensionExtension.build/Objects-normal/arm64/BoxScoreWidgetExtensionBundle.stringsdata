@@ -1,0 +1,96 @@
+{
+  "source": "/Users/giorgio/personal/boxscoreapp/BoxScoreWidgetExtension/BoxScoreWidgetExtensionBundle.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "NBA Team",
+        "location": {
+          "startingColumn": 71,
+          "startingLine": 18
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 22
+        }
+      },
+      {
+        "comment": "",
+        "key": "Select Team",
+        "location": {
+          "startingColumn": 49,
+          "startingLine": 72
+        }
+      },
+      {
+        "comment": "",
+        "key": "Choose an NBA team",
+        "location": {
+          "startingColumn": 67,
+          "startingLine": 73
+        }
+      },
+      {
+        "comment": "",
+        "key": "Team",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "NBA Player",
+        "location": {
+          "startingColumn": 71,
+          "startingLine": 98
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 102
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@",
+        "location": {
+          "startingColumn": 59,
+          "startingLine": 102
+        }
+      },
+      {
+        "comment": "",
+        "key": "Select Player",
+        "location": {
+          "startingColumn": 49,
+          "startingLine": 146
+        }
+      },
+      {
+        "comment": "",
+        "key": "Choose an NBA player",
+        "location": {
+          "startingColumn": 67,
+          "startingLine": 147
+        }
+      },
+      {
+        "comment": "",
+        "key": "Player",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 149
+        }
+      }
+    ]
+  },
+  "version": 1
+}

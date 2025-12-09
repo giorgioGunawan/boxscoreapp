@@ -7,9 +7,12 @@
 
 import WidgetKit
 import SwiftUI
+import AppIntents
 
-struct LastGamesProvider: TimelineProvider {
-    let teamID: Int
+@available(iOS 17.0, *)
+struct LastGamesProvider: AppIntentTimelineProvider {
+    typealias Entry = LastGamesEntry
+    typealias Intent = ConfigureTeamIntent
     
     func placeholder(in context: Context) -> LastGamesEntry {
         LastGamesEntry(
@@ -20,29 +23,25 @@ struct LastGamesProvider: TimelineProvider {
         )
     }
     
-    func getSnapshot(in context: Context, completion: @escaping (LastGamesEntry) -> Void) {
+    func snapshot(for configuration: ConfigureTeamIntent, in context: Context) async -> LastGamesEntry {
         if context.isPreview {
-            completion(placeholder(in: context))
-            return
+            return placeholder(in: context)
         }
-        
-        Task {
-            let entry = await loadData()
-            completion(entry)
-        }
+        return await loadData(for: configuration)
     }
     
-    func getTimeline(in context: Context, completion: @escaping (Timeline<LastGamesEntry>) -> Void) {
-        Task {
-            let entry = await loadData()
-            let nextUpdate = Calendar.current.date(byAdding: .hour, value: 1, to: Date()) ?? Date()
-            let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
-            completion(timeline)
-        }
+    func timeline(for configuration: ConfigureTeamIntent, in context: Context) async -> Timeline<LastGamesEntry> {
+        let entry = await loadData(for: configuration)
+        let nextUpdate = Calendar.current.date(byAdding: .hour, value: 1, to: Date()) ?? Date()
+        return Timeline(entries: [entry], policy: .after(nextUpdate))
     }
     
-    private func loadData() async -> LastGamesEntry {
+    private func loadData(for configuration: ConfigureTeamIntent) async -> LastGamesEntry {
+        guard let teamAbbr = configuration.team?.id else {
+            return LastGamesEntry(date: Date(), games: [], error: "No team selected", isPreview: false)
+        }
         do {
+            let teamID = try await NBAAPIService.shared.getTeamID(for: teamAbbr)
             let gamesResponse = try await NBAAPIService.shared.getLastGames(teamID: teamID, count: 3)
             return LastGamesEntry(
                 date: Date(),
@@ -192,11 +191,12 @@ struct LastGameRow: View {
     }
 }
 
+@available(iOS 17.0, *)
 struct LastGamesWidget: Widget {
     let kind: String = "LastGamesWidget"
     
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: LastGamesProvider(teamID: 2)) { entry in
+        AppIntentConfiguration(kind: kind, intent: ConfigureTeamIntent.self, provider: LastGamesProvider()) { entry in
             if #available(iOS 17.0, *) {
                 LastGamesWidgetEntryView(entry: entry)
                     .containerBackground(Color.black, for: .widget)
