@@ -138,3 +138,31 @@ struct PlayerDBEntry: Codable {
     let school: String?
 }
 
+// MARK: - Player Roster Models (for live API data)
+
+struct PlayerRosterEntry: Codable {
+    let nba_player_id: Int
+    let name: String
+    let team_abbreviation: String
+    let team_name: String
+    let jersey_number: String?
+    let position: String?
+}
+
+struct PlayerRosterResponse: Codable {
+    let season: String
+    let updated_at: String
+    let total_players: Int
+    let players: [PlayerRosterEntry]
+}
+
+struct CachedPlayerRoster: Codable {
+    let roster: PlayerRosterResponse
+    let cachedAt: Date
+    
+    var isExpired: Bool {
+        let expirationInterval: TimeInterval = 24 * 60 * 60 // 24 hours
+        return Date().timeIntervalSince(cachedAt) > expirationInterval
+    }
+}
+

@@ -17,7 +17,6 @@ struct CountdownProvider: AppIntentTimelineProvider {
         CountdownEntry(
             date: Date(),
             game: nil,
-            teamAbbr: "GSW",
             error: nil,
             isPreview: true
         )
@@ -38,7 +37,7 @@ struct CountdownProvider: AppIntentTimelineProvider {
     
     private func loadData(for configuration: ConfigureTeamIntent) async -> CountdownEntry {
         guard let teamAbbr = configuration.team?.id else {
-            return CountdownEntry(date: Date(), game: nil, teamAbbr: nil, error: "No team selected", isPreview: false)
+            return CountdownEntry(date: Date(), game: nil, error: "No team selected", isPreview: false)
         }
         do {
             let teamID = try await NBAAPIService.shared.getTeamID(for: teamAbbr)
@@ -47,7 +46,6 @@ struct CountdownProvider: AppIntentTimelineProvider {
             return CountdownEntry(
                 date: Date(),
                 game: game,
-                teamAbbr: teamAbbr,
                 error: nil,
                 isPreview: false
             )
@@ -55,7 +53,6 @@ struct CountdownProvider: AppIntentTimelineProvider {
             return CountdownEntry(
                 date: Date(),
                 game: nil,
-                teamAbbr: teamAbbr,
                 error: error.localizedDescription,
                 isPreview: false
             )
@@ -66,7 +63,6 @@ struct CountdownProvider: AppIntentTimelineProvider {
 struct CountdownEntry: TimelineEntry {
     let date: Date
     let game: NBAGame?
-    let teamAbbr: String?
     let error: String?
     let isPreview: Bool
 }
@@ -81,11 +77,11 @@ struct CountdownWidgetEntryView: View {
         } else if let game = entry.game {
             switch family {
             case .systemSmall:
-                SmallCountdownView(entry: entry, game: game, currentDate: entry.date)
+                SmallCountdownView(game: game, currentDate: entry.date)
             case .systemMedium:
-                MediumCountdownView(entry: entry, game: game, currentDate: entry.date)
+                MediumCountdownView(game: game, currentDate: entry.date)
             default:
-                SmallCountdownView(entry: entry, game: game, currentDate: entry.date)
+                SmallCountdownView(game: game, currentDate: entry.date)
             }
         } else {
             EmptyView(message: "No upcoming game")
@@ -94,173 +90,133 @@ struct CountdownWidgetEntryView: View {
 }
 
 struct SmallCountdownView: View {
-    let entry: CountdownEntry
     let game: NBAGame
     let currentDate: Date
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 3) {
-            HStack(spacing: 4) {
-                Text(entry.teamAbbr ?? "TBD")
-                    .font(.system(size: 15, weight: .black))
-                Text(game.is_home ? "vs" : "@")
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundColor(game.is_home ? .green : .blue)
-                Text(game.opponent)
-                    .font(.system(size: 15, weight: .black))
-            }
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Next Game")
+                .font(.headline)
+                .foregroundColor(.white)
             
-            Divider()
+            Spacer()
             
+            // Countdown or time
             if let gameDate = NBAAPIService.parseUTCDate(game.datetime_utc) {
                 let timeUntil = gameDate.timeIntervalSince(currentDate)
                 
                 if timeUntil > 0 {
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("Game starts in")
-                            .font(.system(size: 10, weight: .medium))
-                            .foregroundColor(.secondary)
+                        Text(formatCountdown(timeUntil))
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
                         
-                        HStack(spacing: 20) {
-                            VStack(spacing: 0) {
-                                Text(formatDays(timeUntil))
-                                    .font(.system(size: 32, weight: .black))
-                                    .fixedSize()
-                                Text("days")
-                                    .font(.system(size: 11, weight: .semibold))
-                                    .foregroundColor(.secondary)
-                            }
-                            
-                            VStack(spacing: 0) {
-                                Text(formatHours(timeUntil))
-                                    .font(.system(size: 32, weight: .black))
-                                    .fixedSize()
-                                Text("hours")
-                                    .font(.system(size: 11, weight: .semibold))
-                                    .foregroundColor(.secondary)
-                            }
-                            
-                            Spacer()
-                        }
+                        Text("until tip-off")
+                            .font(.caption)
+                            .foregroundColor(.gray)
                     }
                 } else {
-                    Text("LIVE")
-                        .font(.system(size: 28, weight: .black))
-                        .foregroundColor(.red)
+                    Text("Game started")
+                        .font(.headline)
+                        .foregroundColor(.gray)
                 }
-                
-                Spacer()
-                
-                Text(formatGameDate(gameDate))
-                    .font(.system(size: 11, weight: .semibold))
-                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+            
+            // Opponent
+            HStack {
+                Text(game.is_home ? "vs" : "@")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                Text(game.opponent)
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+            }
+            
+            // Game time
+            if let gameDate = NBAAPIService.parseUTCDate(game.datetime_utc) {
+                Text(formatGameTime(gameDate))
+                    .font(.caption)
+                    .foregroundColor(.gray)
             }
         }
-        .padding(6)
+        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .background(Color.black)
     }
+}
+
+struct MediumCountdownView: View {
+    let game: NBAGame
+    let currentDate: Date
     
-    private func formatDays(_ timeInterval: TimeInterval) -> String {
-        let totalHours = Int(timeInterval) / 3600
-        let days = totalHours / 24
-        return String(format: "%02d", days)
-    }
-    
-    private func formatHours(_ timeInterval: TimeInterval) -> String {
-        let totalHours = Int(timeInterval) / 3600
-        let hours = totalHours % 24
-        return String(format: "%02d", hours)
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text("Next Game")
+                .font(.title3)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+            
+            // Opponent info
+            HStack {
+                Text(game.is_home ? "vs" : "@")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+                Text(game.opponent_name)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+            }
+            
+            Spacer()
+            
+            // Countdown or time
+            if let gameDate = NBAAPIService.parseUTCDate(game.datetime_utc) {
+                let timeUntil = gameDate.timeIntervalSince(currentDate)
+                
+                if timeUntil > 0 {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(formatCountdown(timeUntil))
+                            .font(.system(size: 36, weight: .bold))
+                            .foregroundColor(.white)
+                        
+                        Text("until tip-off")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                    }
+                } else {
+                    Text("Game started")
+                        .font(.title2)
+                        .foregroundColor(.gray)
+                }
+            }
+            
+            Spacer()
+            
+            // Game date and time
+            if let gameDate = NBAAPIService.parseUTCDate(game.datetime_utc) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(formatGameDate(gameDate))
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                    Text(formatGameTime(gameDate))
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                }
+            }
+        }
+        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .background(Color.black)
     }
     
     private func formatGameDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current
-        formatter.dateFormat = "E MMM d h:mma"
-        return formatter.string(from: date).replacingOccurrences(of: "am", with: "AM").replacingOccurrences(of: "pm", with: "PM")
-    }
-}
-
-struct MediumCountdownView: View {
-    let entry: CountdownEntry
-    let game: NBAGame
-    let currentDate: Date
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            // Show both teams
-            HStack(spacing: 6) {
-                Text(entry.teamAbbr ?? "TBD")
-                    .font(.system(size: 17, weight: .black))
-                Text(game.is_home ? "vs" : "@")
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundColor(game.is_home ? .green : .blue)
-                Text(game.opponent)
-                    .font(.system(size: 17, weight: .black))
-            }
-            
-            Divider()
-            
-            if let gameDate = NBAAPIService.parseUTCDate(game.datetime_utc) {
-                let timeUntil = gameDate.timeIntervalSince(currentDate)
-                
-                if timeUntil > 0 {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("Game starts in")
-                            .font(.system(size: 11, weight: .medium))
-                            .foregroundColor(.secondary)
-                        
-                        HStack(spacing: 20) {
-                            VStack(spacing: 2) {
-                                Text(formatDays(timeUntil))
-                                    .font(.system(size: 40, weight: .black))
-                                Text("days")
-                                    .font(.system(size: 10, weight: .medium))
-                                    .foregroundColor(.secondary)
-                            }
-                            
-                            VStack(spacing: 2) {
-                                Text(formatHours(timeUntil))
-                                    .font(.system(size: 40, weight: .black))
-                                Text("hours")
-                                    .font(.system(size: 10, weight: .medium))
-                                    .foregroundColor(.secondary)
-                            }
-                            
-                            Spacer()
-                        }
-                    }
-                } else {
-                    Text("LIVE NOW")
-                        .font(.system(size: 32, weight: .black))
-                        .foregroundColor(.red)
-                }
-                
-                Spacer()
-                
-                // Game details in one line
-                Text("\(formatGameDateOneLine(gameDate)) | \(formatGameTime(gameDate))")
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundColor(.secondary)
-            }
-        }
-        .padding(6)
-    }
-    
-    private func formatDays(_ timeInterval: TimeInterval) -> String {
-        let totalHours = Int(timeInterval) / 3600
-        let days = totalHours / 24
-        return String(format: "%02d", days)
-    }
-    
-    private func formatHours(_ timeInterval: TimeInterval) -> String {
-        let totalHours = Int(timeInterval) / 3600
-        let hours = totalHours % 24
-        return String(format: "%02d", hours)
-    }
-    
-    private func formatGameDateOneLine(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.timeZone = TimeZone.current
-        formatter.dateFormat = "E MMM d"
+        formatter.dateFormat = "EEEE, MMMM d"
         return formatter.string(from: date)
     }
 }
@@ -295,7 +251,11 @@ struct CountdownWidget: Widget {
         AppIntentConfiguration(kind: kind, intent: ConfigureTeamIntent.self, provider: CountdownProvider()) { entry in
             if #available(iOS 17.0, *) {
                 CountdownWidgetEntryView(entry: entry)
-                    .containerBackground(for: .widget) {}
+                    .containerBackground(Color.black, for: .widget)
+            } else {
+                CountdownWidgetEntryView(entry: entry)
+                    .padding()
+                    .background(Color.black)
             }
         }
         .configurationDisplayName("Countdown to Next Game")
@@ -324,7 +284,6 @@ struct CountdownWidget: Widget {
             result: nil,
             score_display: nil
         ),
-        teamAbbr: "GSW",
         error: nil,
         isPreview: true
     )

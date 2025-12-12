@@ -10,12 +10,20 @@ class NBAAPIService {
     private var lastTeamsFetch: Date?
     private let teamsCacheTimeout: TimeInterval = 3600 // 1 hour
     
-    // Cache for player database
+    // Cache for player database (bundled JSON - fallback)
     private var playerDatabase: PlayerDatabase?
     private var playerNameToIDMapping: [String: Int] = [:]
     
+    // Cache for live player roster (API-based, 24hr TTL)
+    private let appGroupDefaults: UserDefaults?
+    private let rosterCacheKey = "cachedPlayerRoster"
+    private let rosterCacheTimeout: TimeInterval = 24 * 60 * 60 // 24 hours
+    
     private init() {
-        loadPlayerDatabase()
+        // Initialize App Group UserDefaults for sharing between app and widgets
+        appGroupDefaults = UserDefaults(suiteName: SubscriptionHelper.appGroupId)
+        
+        loadPlayerDatabase() // Load bundled JSON as fallback
     }
     
     // MARK: - Team ID Mapping
@@ -121,6 +129,83 @@ class NBAAPIService {
         return database.players.filter { player in
             player.name.lowercased().contains(lowerQuery)
         }
+    }
+    
+    // MARK: - Player Roster (Live API with 24hr cache)
+    
+    /// Fetches the current player roster from the API or cache
+    /// Returns cached data if < 24 hours old, otherwise fetches fresh data
+    func getPlayerRoster() async throws -> PlayerRosterResponse {
+        // Try to load from cache first
+        if let cachedRoster = loadCachedRoster(), !cachedRoster.isExpired {
+            print("✅ Using cached player roster (age: \(Int(Date().timeIntervalSince(cachedRoster.cachedAt) / 3600))hrs)")
+            return cachedRoster.roster
+        }
+        
+        // Cache expired or doesn't exist, fetch from API
+        print("🔄 Fetching fresh player roster from API...")
+        let roster = try await fetchPlayerRosterFromAPI()
+        
+        // Cache the result
+        saveCachedRoster(roster)
+        
+        return roster
+    }
+    
+    /// Fetches player roster from the backend API
+    private func fetchPlayerRosterFromAPI() async throws -> PlayerRosterResponse {
+        guard let url = URL(string: "\(baseURL)/players/roster") else {
+            throw APIError.invalidURL
+        }
+        
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let httpResponse = response as? HTTPURLResponse,
+              httpResponse.statusCode == 200 else {
+            throw APIError.invalidResponse
+        }
+        
+        return try JSONDecoder().decode(PlayerRosterResponse.self, from: data)
+    }
+    
+    /// Loads cached roster from App Group UserDefaults
+    private func loadCachedRoster() -> CachedPlayerRoster? {
+        guard let defaults = appGroupDefaults,
+              let data = defaults.data(forKey: rosterCacheKey) else {
+            return nil
+        }
+        
+        return try? JSONDecoder().decode(CachedPlayerRoster.self, from: data)
+    }
+    
+    /// Saves roster to App Group UserDefaults
+    private func saveCachedRoster(_ roster: PlayerRosterResponse) {
+        guard let defaults = appGroupDefaults else { return }
+        
+        let cachedRoster = CachedPlayerRoster(roster: roster, cachedAt: Date())
+        
+        if let data = try? JSONEncoder().encode(cachedRoster) {
+            defaults.set(data, forKey: rosterCacheKey)
+            print("💾 Saved player roster to cache (\(roster.total_players) players)")
+        }
+    }
+    
+    /// Gets a player's current team by NBA player ID
+    func getPlayerTeam(nbaPlayerID: Int) async throws -> (team: String, teamName: String) {
+        let roster = try await getPlayerRoster()
+        
+        guard let player = roster.players.first(where: { $0.nba_player_id == nbaPlayerID }) else {
+            throw APIError.playerNotFound
+        }
+        
+        return (team: player.team_abbreviation, teamName: player.team_name)
+    }
+    
+    /// Forces a refresh of the player roster cache
+    func refreshPlayerRoster() async throws {
+        print("🔄 Force refreshing player roster...")
+        let roster = try await fetchPlayerRosterFromAPI()
+        saveCachedRoster(roster)
     }
     
     // MARK: - Widget Endpoints

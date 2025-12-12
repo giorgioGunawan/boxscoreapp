@@ -86,24 +86,25 @@ struct LockScreenNextGameWidgetView: View {
         case .accessoryCircular:
             VStack(spacing: 0) {
                 Text(entry.opponent ?? "--")
-                    .font(.system(size: 16, weight: .bold))
+                    .font(.system(size: 14, weight: .bold))
                 Text(entry.gameTime ?? "--")
-                    .font(.system(size: 10, weight: .medium))
+                    .font(.system(size: 9))
             }
             
         case .accessoryRectangular:
             VStack(alignment: .leading, spacing: 2) {
                 Text("Next Game")
                     .font(.caption2)
-                    .fontWeight(.medium)
+                    .fontWeight(.semibold)
                 if let opponent = entry.opponent, let time = entry.gameTime {
                     Text("vs \(opponent)")
-                        .font(.headline)
-                    Text(time)
                         .font(.caption)
+                        .fontWeight(.medium)
+                    Text(time)
+                        .font(.caption2)
                 } else {
                     Text("No games")
-                        .font(.caption)
+                        .font(.caption2)
                 }
             }
             
@@ -206,26 +207,25 @@ struct LockScreenPlayerStatsWidgetView: View {
     var body: some View {
         switch family {
         case .accessoryCircular:
-            VStack(spacing: 1) {
+            VStack(spacing: 0) {
                 Text("\(entry.pts ?? 0)")
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.system(size: 18, weight: .bold))
                 Text("PTS")
-                    .font(.system(size: 9))
+                    .font(.system(size: 8))
             }
             
         case .accessoryRectangular:
             VStack(alignment: .leading, spacing: 2) {
                 Text(entry.playerName ?? "Player")
-                    .font(.caption)
+                    .font(.caption2)
                     .fontWeight(.semibold)
-                    .lineLimit(1)
-                HStack(spacing: 8) {
+                HStack(spacing: 6) {
                     Text("\(entry.pts ?? 0)P")
-                        .font(.system(size: 15, weight: .bold))
+                        .font(.caption)
                     Text("\(entry.reb ?? 0)R")
-                        .font(.system(size: 13, weight: .semibold))
+                        .font(.caption)
                     Text("\(entry.ast ?? 0)A")
-                        .font(.system(size: 13, weight: .semibold))
+                        .font(.caption)
                 }
             }
             
@@ -321,27 +321,20 @@ struct LockScreenTeamRecordWidgetView: View {
     var body: some View {
         switch family {
         case .accessoryCircular:
-            VStack(spacing: 1) {
+            VStack(spacing: 0) {
                 Text(entry.teamAbbr ?? "---")
-                    .font(.system(size: 13, weight: .bold))
+                    .font(.system(size: 12, weight: .bold))
                 Text("\(entry.wins ?? 0)-\(entry.losses ?? 0)")
-                    .font(.system(size: 11, weight: .semibold))
+                    .font(.system(size: 9))
             }
             
         case .accessoryRectangular:
             HStack {
                 Text(entry.teamAbbr ?? "Team")
-                    .font(.system(size: 16, weight: .bold))
+                    .font(.system(size: 14, weight: .bold))
                 Spacer()
-                HStack(spacing: 2) {
-                    Text("\(entry.wins ?? 0)")
-                        .font(.system(size: 16, weight: .bold))
-                        .foregroundColor(.green)
-                    Text("-")
-                    Text("\(entry.losses ?? 0)")
-                        .font(.system(size: 16, weight: .bold))
-                        .foregroundColor(.red)
-                }
+                Text("\(entry.wins ?? 0)-\(entry.losses ?? 0)")
+                    .font(.system(size: 14, weight: .semibold))
             }
             
         case .accessoryInline:
