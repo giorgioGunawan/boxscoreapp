@@ -21,7 +21,7 @@ class NBAAPIService {
     
     private init() {
         // Initialize App Group UserDefaults for sharing between app and widgets
-        appGroupDefaults = UserDefaults(suiteName: SubscriptionHelper.appGroupId)
+        appGroupDefaults = UserDefaults(suiteName: "group.com.giorgiogunawan.boxscore")
         
         loadPlayerDatabase() // Load bundled JSON as fallback
     }

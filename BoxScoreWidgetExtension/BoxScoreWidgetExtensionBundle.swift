@@ -101,28 +101,69 @@ struct PlayerEntity: AppEntity {
     var displayRepresentation: DisplayRepresentation {
         DisplayRepresentation(title: "\(name)", subtitle: "\(team)")
     }
+    
+    // Custom query method for team-based filtering
+    static func query(for team: TeamEntity?) -> TeamFilteredPlayerQuery {
+        return TeamFilteredPlayerQuery(teamFilter: team?.id)
+    }
 }
 
 struct PlayerQuery: EntityQuery {
     func entities(for identifiers: [PlayerEntity.ID]) async throws -> [PlayerEntity] {
-        let allPlayers = loadPlayersFromDatabase()
+        let allPlayers = await loadPlayersFromRoster()
         return allPlayers.filter { identifiers.contains($0.id) }
     }
     
     func suggestedEntities() async throws -> [PlayerEntity] {
-        let allPlayers = loadPlayersFromDatabase()
-        return Array(allPlayers.prefix(50))
+        let allPlayers = await loadPlayersFromRoster()
+        // Return all players
+        return allPlayers
     }
     
     func entities(matching string: String) async throws -> [PlayerEntity] {
-        let allPlayers = loadPlayersFromDatabase()
+        let allPlayers = await loadPlayersFromRoster()
         let lowercased = string.lowercased()
         return allPlayers.filter { player in
             player.name.lowercased().contains(lowercased) ||
             player.team.lowercased().contains(lowercased)
-        }.prefix(50).map { $0 }
+        }
     }
     
+    /// Load players from cached roster (24hr TTL) or fall back to static JSON
+    private func loadPlayersFromRoster() async -> [PlayerEntity] {
+        // Try to load from App Group cache first
+        if let cachedPlayers = loadFromCache() {
+            return cachedPlayers
+        }
+        
+        // Fall back to static JSON
+        return loadPlayersFromDatabase()
+    }
+    
+    /// Load from App Group UserDefaults cache
+    private func loadFromCache() -> [PlayerEntity]? {
+        guard let defaults = UserDefaults(suiteName: "group.com.giorgiogunawan.boxscore"),
+              let data = defaults.data(forKey: "cachedPlayerRoster"),
+              let cached = try? JSONDecoder().decode(CachedPlayerRoster.self, from: data) else {
+            return nil
+        }
+        
+        // Check if expired
+        if cached.isExpired {
+            return nil
+        }
+        
+        // Convert to PlayerEntity
+        return cached.roster.players.map { player in
+            PlayerEntity(
+                id: player.nba_player_id,
+                name: player.name,
+                team: player.team_abbreviation
+            )
+        }
+    }
+    
+    /// Fall back to static JSON database
     private func loadPlayersFromDatabase() -> [PlayerEntity] {
         guard let url = Bundle.main.url(forResource: "players_db", withExtension: "json"),
               let data = try? Data(contentsOf: url),
@@ -155,6 +196,101 @@ struct ConfigurePlayerIntent: WidgetConfigurationIntent {
     
     init(player: PlayerEntity) {
         self.player = player
+    }
+}
+
+
+
+// MARK: - Team-Filtered Player Query
+
+struct TeamFilteredPlayerQuery: EntityQuery {
+    var teamFilter: String?
+    
+    func entities(for identifiers: [PlayerEntity.ID]) async throws -> [PlayerEntity] {
+        let allPlayers = await loadPlayersFromRoster()
+        return allPlayers.filter { identifiers.contains($0.id) }
+    }
+    
+    func suggestedEntities() async throws -> [PlayerEntity] {
+        let allPlayers = await loadPlayersFromRoster()
+        
+        // Filter by team if specified
+        if let teamFilter = teamFilter {
+            let filtered = allPlayers.filter { $0.team.uppercased() == teamFilter.uppercased() }
+            return filtered
+        }
+        
+        // Return first 50 if no team filter
+        return Array(allPlayers.prefix(50))
+    }
+    
+    func entities(matching string: String) async throws -> [PlayerEntity] {
+        let allPlayers = await loadPlayersFromRoster()
+        let lowercased = string.lowercased()
+        
+        var filtered = allPlayers.filter { player in
+            player.name.lowercased().contains(lowercased)
+        }
+        
+        // Apply team filter if specified
+        if let teamFilter = teamFilter {
+            filtered = filtered.filter { $0.team.uppercased() == teamFilter.uppercased() }
+        }
+        
+        return Array(filtered.prefix(100))
+    }
+    
+    /// Load players from cached roster (24hr TTL) or fall back to static JSON
+    private func loadPlayersFromRoster() async -> [PlayerEntity] {
+        // Try to load from App Group cache first
+        if let cachedPlayers = loadFromCache() {
+            return cachedPlayers
+        }
+        
+        // Fall back to static JSON
+        return loadPlayersFromDatabase()
+    }
+    
+    /// Load from App Group UserDefaults cache
+    private func loadFromCache() -> [PlayerEntity]? {
+        guard let defaults = UserDefaults(suiteName: "group.com.giorgiogunawan.boxscore"),
+              let data = defaults.data(forKey: "cachedPlayerRoster"),
+              let cached = try? JSONDecoder().decode(CachedPlayerRoster.self, from: data) else {
+            return nil
+        }
+        
+        // Check if expired
+        if cached.isExpired {
+            return nil
+        }
+        
+        // Convert to PlayerEntity
+        return cached.roster.players.map { player in
+            PlayerEntity(
+                id: player.nba_player_id,
+                name: player.name,
+                team: player.team_abbreviation
+            )
+        }
+    }
+    
+    /// Fall back to static JSON database
+    private func loadPlayersFromDatabase() -> [PlayerEntity] {
+        guard let url = Bundle.main.url(forResource: "players_db", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let playersArray = json["players"] as? [[String: Any]] else {
+            return []
+        }
+        
+        return playersArray.compactMap { dict -> PlayerEntity? in
+            guard let id = dict["nba_player_id"] as? Int,
+                  let name = dict["name"] as? String,
+                  let team = dict["team"] as? String else {
+                return nil
+            }
+            return PlayerEntity(id: id, name: name, team: team)
+        }
     }
 }
 
